@@ -1,0 +1,1879 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADULT SPEAKING PRACTICE - Pre-A1/A1 EFL Oral Fluency</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0f172a',
+                            900: '#0b0f19',
+                            950: '#05070d',
+                        },
+                        brand: {
+                            green: '#10b981',
+                            greenHover: '#059669',
+                            gold: '#f59e0b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            touch-action: manipulation;
+        }
+        /* Pulse Animation for Active Listening */
+        @keyframes mic-pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+            70% { transform: scale(1.06); box-shadow: 0 0 0 20px rgba(16, 185, 129, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+        .mic-active {
+            animation: mic-pulse 1.5s infinite;
+        }
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.sticky{position:sticky}.inset-0{inset:0px}.top-0{top:0px}.z-30{z-index:30}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.my-3{margin-top:0.75rem;margin-bottom:0.75rem}.mb-1{margin-bottom:0.25rem}.mt-1\.5{margin-top:0.375rem}.mt-1{margin-top:0.25rem}.mt-6{margin-top:1.5rem}.mt-2{margin-top:0.5rem}.mr-1{margin-right:0.25rem}.block{display:block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-full{height:100%}.h-12{height:3rem}.h-20{height:5rem}.h-8{height:2rem}.max-h-\[420px\]{max-height:420px}.max-h-48{max-height:12rem}.max-h-\[360px\]{max-height:360px}.min-h-\[260px\]{min-height:260px}.w-10{width:2.5rem}.w-full{width:100%}.w-12{width:3rem}.w-20{width:5rem}.w-8{width:2rem}.max-w-5xl{max-width:64rem}.max-w-lg{max-width:32rem}.max-w-md{max-width:28rem}.max-w-3xl{max-width:48rem}.max-w-4xl{max-width:56rem}.max-w-\[85\%\]{max-width:85%}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;user-select:none}.list-inside{list-style-position:inside}.list-disc{list-style-type:disc}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-1\.5{gap:0.375rem}.gap-2\.5{gap:0.625rem}.gap-x-4{column-gap:1rem}.gap-y-1{row-gap:0.25rem}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem * var(--tw-space-y-reverse))}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.space-y-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.375rem * var(--tw-space-y-reverse))}.overflow-y-auto{overflow-y:auto}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-xl{border-radius:0.75rem}.rounded-full{border-radius:9999px}.rounded-md{border-radius:0.375rem}.rounded-lg{border-radius:0.5rem}.rounded-tl-none{border-top-left-radius:0px}.rounded-tr-none{border-top-right-radius:0px}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-amber-200{--tw-border-opacity:1;border-color:rgb(253 230 138 / var(--tw-border-opacity, 1))}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249 / var(--tw-border-opacity, 1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240 / var(--tw-border-opacity, 1))}.border-slate-300{--tw-border-opacity:1;border-color:rgb(203 213 225 / var(--tw-border-opacity, 1))}.border-emerald-500\/30{border-color:rgb(16 185 129 / 0.3)}.border-amber-500{--tw-border-opacity:1;border-color:rgb(245 158 11 / var(--tw-border-opacity, 1))}.border-slate-200\/60{border-color:rgb(226 232 240 / 0.6)}.border-slate-300\/50{border-color:rgb(203 213 225 / 0.5)}.border-amber-500\/60{border-color:rgb(245 158 11 / 0.6)}.border-amber-500\/30{border-color:rgb(245 158 11 / 0.3)}.border-emerald-500{--tw-border-opacity:1;border-color:rgb(16 185 129 / var(--tw-border-opacity, 1))}.bg-amber-50{--tw-bg-opacity:1;background-color:rgb(255 251 235 / var(--tw-bg-opacity, 1))}.bg-amber-500{--tw-bg-opacity:1;background-color:rgb(245 158 11 / var(--tw-bg-opacity, 1))}.bg-amber-500\/10{background-color:rgb(245 158 11 / 0.1)}.bg-blue-500\/10{background-color:rgb(59 130 246 / 0.1)}.bg-emerald-500{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.bg-emerald-500\/10{background-color:rgb(16 185 129 / 0.1)}.bg-purple-500\/10{background-color:rgb(168 85 247 / 0.1)}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.bg-slate-50{--tw-bg-opacity:1;background-color:rgb(248 250 252 / var(--tw-bg-opacity, 1))}.bg-slate-950\/70{background-color:rgb(2 6 23 / 0.7)}.bg-slate-950\/75{background-color:rgb(2 6 23 / 0.75)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/10{background-color:rgb(255 255 255 / 0.1)}.bg-white\/20{background-color:rgb(255 255 255 / 0.2)}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.bg-slate-200\/50{background-color:rgb(226 232 240 / 0.5)}.bg-slate-300{--tw-bg-opacity:1;background-color:rgb(203 213 225 / var(--tw-bg-opacity, 1))}.bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246 / var(--tw-bg-opacity, 1))}.bg-blue-500\/20{background-color:rgb(59 130 246 / 0.2)}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105 / var(--tw-bg-opacity, 1))}.bg-indigo-600{--tw-bg-opacity:1;background-color:rgb(79 70 229 / var(--tw-bg-opacity, 1))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-emerald-600{--tw-gradient-from:#059669 var(--tw-gradient-from-position);--tw-gradient-to:rgb(5 150 105 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-teal-700{--tw-gradient-to:#0f766e var(--tw-gradient-to-position)}.p-2{padding:0.5rem}.p-2\.5{padding:0.625rem}.p-3\.5{padding:0.875rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-3{padding:0.75rem}.p-5{padding:1.25rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.pb-3{padding-bottom:0.75rem}.pt-2{padding-top:0.5rem}.pb-4{padding-bottom:1rem}.pt-1{padding-top:0.25rem}.pr-1{padding-right:0.25rem}.text-left{text-align:left}.text-center{text-align:center}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.font-sans{font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"}.text-2xl{font-size:1.5rem;line-height:2rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.font-normal{font-weight:400}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-tight{letter-spacing:-0.025em}.tracking-widest{letter-spacing:0.1em}.tracking-wider{letter-spacing:0.05em}.text-amber-500{--tw-text-opacity:1;color:rgb(245 158 11 / var(--tw-text-opacity, 1))}.text-amber-600{--tw-text-opacity:1;color:rgb(217 119 6 / var(--tw-text-opacity, 1))}.text-amber-700{--tw-text-opacity:1;color:rgb(180 83 9 / var(--tw-text-opacity, 1))}.text-blue-500{--tw-text-opacity:1;color:rgb(59 130 246 / var(--tw-text-opacity, 1))}.text-emerald-500{--tw-text-opacity:1;color:rgb(16 185 129 / var(--tw-text-opacity, 1))}.text-emerald-600{--tw-text-opacity:1;color:rgb(5 150 105 / var(--tw-text-opacity, 1))}.text-purple-500{--tw-text-opacity:1;color:rgb(168 85 247 / var(--tw-text-opacity, 1))}.text-rose-500{--tw-text-opacity:1;color:rgb(244 63 94 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85 / var(--tw-text-opacity, 1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42 / var(--tw-text-opacity, 1))}.text-slate-950{--tw-text-opacity:1;color:rgb(2 6 23 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-emerald-100{--tw-text-opacity:1;color:rgb(209 250 229 / var(--tw-text-opacity, 1))}.text-emerald-700{--tw-text-opacity:1;color:rgb(4 120 87 / var(--tw-text-opacity, 1))}.text-purple-600{--tw-text-opacity:1;color:rgb(147 51 234 / var(--tw-text-opacity, 1))}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-emerald-200{--tw-text-opacity:1;color:rgb(167 243 208 / var(--tw-text-opacity, 1))}.text-amber-900{--tw-text-opacity:1;color:rgb(120 53 15 / var(--tw-text-opacity, 1))}.text-indigo-500{--tw-text-opacity:1;color:rgb(99 102 241 / var(--tw-text-opacity, 1))}.opacity-60{opacity:0.6}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-amber-500\/20{--tw-shadow-color:rgb(245 158 11 / 0.2);--tw-shadow:var(--tw-shadow-colored)}.shadow-emerald-500\/20{--tw-shadow-color:rgb(16 185 129 / 0.2);--tw-shadow:var(--tw-shadow-colored)}.shadow-emerald-500\/30{--tw-shadow-color:rgb(16 185 129 / 0.3);--tw-shadow:var(--tw-shadow-colored)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-200{transition-duration:200ms}.hover\:border-emerald-500:hover{--tw-border-opacity:1;border-color:rgb(16 185 129 / var(--tw-border-opacity, 1))}.hover\:border-amber-500:hover{--tw-border-opacity:1;border-color:rgb(245 158 11 / var(--tw-border-opacity, 1))}.hover\:border-purple-500:hover{--tw-border-opacity:1;border-color:rgb(168 85 247 / var(--tw-border-opacity, 1))}.hover\:bg-amber-500\/20:hover{background-color:rgb(245 158 11 / 0.2)}.hover\:bg-amber-600:hover{--tw-bg-opacity:1;background-color:rgb(217 119 6 / var(--tw-bg-opacity, 1))}.hover\:bg-emerald-600:hover{--tw-bg-opacity:1;background-color:rgb(5 150 105 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-100:hover{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-200:hover{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.hover\:bg-white\/20:hover{background-color:rgb(255 255 255 / 0.2)}.hover\:bg-amber-500\/10:hover{background-color:rgb(245 158 11 / 0.1)}.hover\:bg-blue-500\/20:hover{background-color:rgb(59 130 246 / 0.2)}.hover\:bg-indigo-700:hover{--tw-bg-opacity:1;background-color:rgb(67 56 202 / var(--tw-bg-opacity, 1))}.hover\:text-slate-600:hover{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.hover\:shadow-xl:hover{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-amber-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(245 158 11 / var(--tw-ring-opacity, 1))}.focus\:ring-emerald-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(16 185 129 / var(--tw-ring-opacity, 1))}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:translate-x-1{--tw-translate-x:0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:bg-amber-500{--tw-bg-opacity:1;background-color:rgb(245 158 11 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:bg-emerald-500{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:bg-purple-500{--tw-bg-opacity:1;background-color:rgb(168 85 247 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.dark\:inline:is(.dark *){display:inline}.dark\:hidden:is(.dark *){display:none}.dark\:border-amber-800\/60:is(.dark *){border-color:rgb(146 64 14 / 0.6)}.dark\:border-slate-700:is(.dark *){--tw-border-opacity:1;border-color:rgb(51 65 85 / var(--tw-border-opacity, 1))}.dark\:border-slate-800:is(.dark *){--tw-border-opacity:1;border-color:rgb(30 41 59 / var(--tw-border-opacity, 1))}.dark\:border-amber-800\/50:is(.dark *){border-color:rgb(146 64 14 / 0.5)}.dark\:border-slate-700\/60:is(.dark *){border-color:rgb(51 65 85 / 0.6)}.dark\:border-slate-800\/60:is(.dark *){border-color:rgb(30 41 59 / 0.6)}.dark\:border-slate-700\/80:is(.dark *){border-color:rgb(51 65 85 / 0.8)}.dark\:border-slate-800\/80:is(.dark *){border-color:rgb(30 41 59 / 0.8)}.dark\:bg-amber-500\/20:is(.dark *){background-color:rgb(245 158 11 / 0.2)}.dark\:bg-amber-950\/40:is(.dark *){background-color:rgb(69 26 3 / 0.4)}.dark\:bg-emerald-500\/20:is(.dark *){background-color:rgb(16 185 129 / 0.2)}.dark\:bg-navy-900:is(.dark *){--tw-bg-opacity:1;background-color:rgb(11 15 25 / var(--tw-bg-opacity, 1))}.dark\:bg-navy-950:is(.dark *){--tw-bg-opacity:1;background-color:rgb(5 7 13 / var(--tw-bg-opacity, 1))}.dark\:bg-slate-800:is(.dark *){--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.dark\:bg-slate-800\/60:is(.dark *){background-color:rgb(30 41 59 / 0.6)}.dark\:bg-slate-800\/40:is(.dark *){background-color:rgb(30 41 59 / 0.4)}.dark\:bg-amber-950\/30:is(.dark *){background-color:rgb(69 26 3 / 0.3)}.dark\:bg-navy-900\/40:is(.dark *){background-color:rgb(11 15 25 / 0.4)}.dark\:bg-slate-700:is(.dark *){--tw-bg-opacity:1;background-color:rgb(51 65 85 / var(--tw-bg-opacity, 1))}.dark\:bg-slate-800\/50:is(.dark *){background-color:rgb(30 41 59 / 0.5)}.dark\:bg-navy-800:is(.dark *){--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.dark\:text-amber-200:is(.dark *){--tw-text-opacity:1;color:rgb(253 230 138 / var(--tw-text-opacity, 1))}.dark\:text-amber-400:is(.dark *){--tw-text-opacity:1;color:rgb(251 191 36 / var(--tw-text-opacity, 1))}.dark\:text-emerald-400:is(.dark *){--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.dark\:text-slate-100:is(.dark *){--tw-text-opacity:1;color:rgb(241 245 249 / var(--tw-text-opacity, 1))}.dark\:text-slate-200:is(.dark *){--tw-text-opacity:1;color:rgb(226 232 240 / var(--tw-text-opacity, 1))}.dark\:text-slate-300:is(.dark *){--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.dark\:text-slate-400:is(.dark *){--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.dark\:text-white:is(.dark *){--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.dark\:text-purple-400:is(.dark *){--tw-text-opacity:1;color:rgb(192 132 252 / var(--tw-text-opacity, 1))}.dark\:text-amber-100\/90:is(.dark *){color:rgb(254 243 199 / 0.9)}.dark\:text-blue-400:is(.dark *){--tw-text-opacity:1;color:rgb(96 165 250 / var(--tw-text-opacity, 1))}.dark\:text-amber-100:is(.dark *){--tw-text-opacity:1;color:rgb(254 243 199 / var(--tw-text-opacity, 1))}.dark\:text-amber-300:is(.dark *){--tw-text-opacity:1;color:rgb(252 211 77 / var(--tw-text-opacity, 1))}.dark\:hover\:border-emerald-500:hover:is(.dark *){--tw-border-opacity:1;border-color:rgb(16 185 129 / var(--tw-border-opacity, 1))}.dark\:hover\:border-amber-500:hover:is(.dark *){--tw-border-opacity:1;border-color:rgb(245 158 11 / var(--tw-border-opacity, 1))}.dark\:hover\:border-purple-500:hover:is(.dark *){--tw-border-opacity:1;border-color:rgb(168 85 247 / var(--tw-border-opacity, 1))}.dark\:hover\:bg-slate-700:hover:is(.dark *){--tw-bg-opacity:1;background-color:rgb(51 65 85 / var(--tw-bg-opacity, 1))}.dark\:hover\:bg-slate-800:hover:is(.dark *){--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.dark\:hover\:text-white:hover:is(.dark *){--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.dark\:hover\:text-slate-200:hover:is(.dark *){--tw-text-opacity:1;color:rgb(226 232 240 / var(--tw-text-opacity, 1))}@media (min-width: 640px){.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:grid-cols-6{grid-template-columns:repeat(6, minmax(0, 1fr))}.sm\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.sm\:flex-row{flex-direction:row}.sm\:gap-3{gap:0.75rem}.sm\:text-left{text-align:left}.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}.sm\:text-base{font-size:1rem;line-height:1.5rem}}@media (min-width: 768px){.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}}</style></head>
+
+<body class="h-full bg-slate-100 text-slate-900 dark:bg-navy-950 dark:text-slate-100 transition-colors duration-200 flex flex-col font-sans select-none">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-30 bg-white border-b border-slate-200 dark:bg-navy-900 dark:border-slate-800 shadow-sm transition-colors">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <button id="btn-header-back" class="p-2 rounded-xl text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 transition" title="Go Back">
+                    <i class="fa-solid fa-arrow-left text-lg"></i>
+                </button>
+                <div class="w-10 h-10 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-comments"></i>
+                </div>
+                <div>
+                    <h1 class="text-base sm:text-lg font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+                        ADULT SPEAKING PRACTICE
+                    </h1>
+                    <p class="text-xs font-medium text-slate-500 dark:text-slate-400">
+                        Pre-A1 / A1 EFL Oral Fluency
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-3">
+                <!-- Theme Toggle Button -->
+                <button id="btn-theme-toggle" class="p-2.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 transition" title="Toggle Theme">
+                    <i class="fa-solid fa-moon text-base dark:hidden"></i>
+                    <i class="fa-solid fa-sun text-base hidden dark:inline"></i>
+                </button>
+
+                <!-- Student Identity Indicator -->
+                <button id="btn-student-id" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300" title="Change Student Identifier">
+                    <i class="fa-solid fa-user text-emerald-500"></i>
+                    <span id="header-student-name">Learner 01</span>
+                </button>
+
+                <!-- Teacher Lock Button -->
+                <button id="btn-teacher-lock" class="p-2.5 rounded-xl bg-amber-500/10 text-amber-600 hover:bg-amber-500/20 dark:bg-amber-500/20 dark:text-amber-400 transition" title="Teacher Access">
+                    <i class="fa-solid fa-lock text-base"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main id="app-viewport" class="flex-1 max-w-5xl w-full mx-auto p-4 flex flex-col justify-between overflow-y-auto">
+            <div class="max-w-4xl mx-auto w-full space-y-6 py-2">
+                <div class="flex items-center justify-between bg-amber-500/10 border border-amber-500/30 p-5 rounded-3xl">
+                    <div class="flex items-center gap-3 text-amber-600 dark:text-amber-400">
+                        <i class="fa-solid fa-lock-open text-2xl"></i>
+                        <div>
+                            <h2 class="text-xl font-extrabold text-slate-900 dark:text-white">PANEL DEL MAESTRO</h2>
+                            <p class="text-xs text-slate-600 dark:text-slate-300">Teacher controls &amp; student progress logs</p>
+                        </div>
+                    </div>
+                    <button id="btn-teacher-logout" class="px-4 py-2 bg-amber-500 text-slate-950 hover:bg-amber-600 font-bold text-xs rounded-xl transition shadow-md">
+                        LOG OUT OF TEACHER MODE
+                    </button>
+                </div>
+
+                <!-- SECTION 1: COURSE ACCESS (UNLOCKED UNITS CONTROL) -->
+                <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-base font-extrabold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-key text-amber-500"></i> Course Access Settings
+                        </h3>
+                        <span class="text-xs font-semibold text-slate-500">Shared Global Availability</span>
+                    </div>
+
+                    <p class="text-xs text-slate-600 dark:text-slate-400">
+                        Select the highest unit available to students. (e.g. Selecting Unit 4 unlocks Units 1–4).
+                    </p>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2">
+                        
+                            <button onclick="updateCourseAccess(1)" class="py-3 px-3 rounded-2xl border font-bold text-xs flex items-center justify-between transition bg-emerald-500 text-white border-emerald-500 shadow-md">
+                                <span>Through Unit 1</span>
+                                <i class="fa-solid fa-check"></i>
+                            </button>
+                        
+                            <button onclick="updateCourseAccess(2)" class="py-3 px-3 rounded-2xl border font-bold text-xs flex items-center justify-between transition bg-emerald-500 text-white border-emerald-500 shadow-md">
+                                <span>Through Unit 2</span>
+                                <i class="fa-solid fa-check"></i>
+                            </button>
+                        
+                            <button onclick="updateCourseAccess(3)" class="py-3 px-3 rounded-2xl border font-bold text-xs flex items-center justify-between transition bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-200">
+                                <span>Through Unit 3</span>
+                                <i class="fa-solid fa-lock"></i>
+                            </button>
+                        
+                            <button onclick="updateCourseAccess(4)" class="py-3 px-3 rounded-2xl border font-bold text-xs flex items-center justify-between transition bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-200">
+                                <span>Through Unit 4</span>
+                                <i class="fa-solid fa-lock"></i>
+                            </button>
+                        
+                            <button onclick="updateCourseAccess(5)" class="py-3 px-3 rounded-2xl border font-bold text-xs flex items-center justify-between transition bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-200">
+                                <span>Through Unit 5</span>
+                                <i class="fa-solid fa-lock"></i>
+                            </button>
+                        
+                            <button onclick="updateCourseAccess(6)" class="py-3 px-3 rounded-2xl border font-bold text-xs flex items-center justify-between transition bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-200">
+                                <span>Through Unit 6</span>
+                                <i class="fa-solid fa-lock"></i>
+                            </button>
+                        
+                            <button onclick="updateCourseAccess(7)" class="py-3 px-3 rounded-2xl border font-bold text-xs flex items-center justify-between transition bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-200">
+                                <span>Through Unit 7</span>
+                                <i class="fa-solid fa-lock"></i>
+                            </button>
+                        
+                            <button onclick="updateCourseAccess(8)" class="py-3 px-3 rounded-2xl border font-bold text-xs flex items-center justify-between transition bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-200">
+                                <span>Through Unit 8</span>
+                                <i class="fa-solid fa-lock"></i>
+                            </button>
+                        
+                            <button onclick="updateCourseAccess(9)" class="py-3 px-3 rounded-2xl border font-bold text-xs flex items-center justify-between transition bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-200">
+                                <span>Through Unit 9</span>
+                                <i class="fa-solid fa-lock"></i>
+                            </button>
+                        
+                            <button onclick="updateCourseAccess(10)" class="py-3 px-3 rounded-2xl border font-bold text-xs flex items-center justify-between transition bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-200">
+                                <span>Through Unit 10</span>
+                                <i class="fa-solid fa-lock"></i>
+                            </button>
+                        
+                            <button onclick="updateCourseAccess(11)" class="py-3 px-3 rounded-2xl border font-bold text-xs flex items-center justify-between transition bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-200">
+                                <span>Through Unit 11</span>
+                                <i class="fa-solid fa-lock"></i>
+                            </button>
+                        
+                            <button onclick="updateCourseAccess(12)" class="py-3 px-3 rounded-2xl border font-bold text-xs flex items-center justify-between transition bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-200">
+                                <span>Through Unit 12</span>
+                                <i class="fa-solid fa-lock"></i>
+                            </button>
+                        
+                    </div>
+                </div>
+
+                <!-- SECTION 2: STUDENT ACTIVITY & SAVED CONVERSATIONS -->
+                <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-base font-extrabold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-chart-line text-emerald-500"></i> Student Activity Logs
+                        </h3>
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600">4 Recorded Practice Sessions</span>
+                    </div>
+
+                    
+                        <div class="space-y-3 max-h-[360px] overflow-y-auto pr-1">
+                            
+                                <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 space-y-2">
+                                    <div class="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white">
+                                        <div class="flex items-center gap-2">
+                                            <i class="fa-solid fa-user-graduate text-emerald-500"></i>
+                                            <span>Learner 01</span>
+                                            <span class="font-normal text-slate-500">| Unit 1 (guided)</span>
+                                        </div>
+                                        <span class="text-2xs text-slate-400">5/10/2026, 4:27:29 p.m.</span>
+                                    </div>
+                                    <div class="text-xs text-slate-600 dark:text-slate-300">
+                                        <strong>Scenario:</strong> Exchanging Numbers | <strong>Turns:</strong> 1
+                                    </div>
+                                    <details class="text-2xs text-slate-500 mt-2">
+                                        <summary class="cursor-pointer font-bold text-emerald-600 dark:text-emerald-400">View Full Transcript (3 messages)</summary>
+                                        <div class="mt-2 p-3 bg-white dark:bg-navy-900 rounded-xl border border-slate-200 dark:border-slate-700 space-y-1.5 font-mono text-2xs max-h-48 overflow-y-auto">
+                                            <div><strong>AI:</strong> Hello! I'm your New Friend. Welcome! Are you ready to start?</div><div><strong>USER:</strong> I READY</div><div><strong>CORRECTION:</strong> Say: I am ready.</div>
+                                        </div>
+                                    </details>
+                                </div>
+                            
+                                <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 space-y-2">
+                                    <div class="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white">
+                                        <div class="flex items-center gap-2">
+                                            <i class="fa-solid fa-user-graduate text-emerald-500"></i>
+                                            <span>Learner 01</span>
+                                            <span class="font-normal text-slate-500">| Unit 1 (guided)</span>
+                                        </div>
+                                        <span class="text-2xs text-slate-400">5/10/2026, 4:27:29 p.m.</span>
+                                    </div>
+                                    <div class="text-xs text-slate-600 dark:text-slate-300">
+                                        <strong>Scenario:</strong> Exchanging Numbers | <strong>Turns:</strong> 2
+                                    </div>
+                                    <details class="text-2xs text-slate-500 mt-2">
+                                        <summary class="cursor-pointer font-bold text-emerald-600 dark:text-emerald-400">View Full Transcript (5 messages)</summary>
+                                        <div class="mt-2 p-3 bg-white dark:bg-navy-900 rounded-xl border border-slate-200 dark:border-slate-700 space-y-1.5 font-mono text-2xs max-h-48 overflow-y-auto">
+                                            <div><strong>AI:</strong> Hello! I'm your New Friend. Welcome! Are you ready to start?</div><div><strong>USER:</strong> I READY</div><div><strong>CORRECTION:</strong> Say: I am ready.</div><div><strong>USER:</strong> I AM READY</div><div><strong>AI:</strong> Great! What is your name?</div>
+                                        </div>
+                                    </details>
+                                </div>
+                            
+                                <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 space-y-2">
+                                    <div class="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white">
+                                        <div class="flex items-center gap-2">
+                                            <i class="fa-solid fa-user-graduate text-emerald-500"></i>
+                                            <span>Learner 01</span>
+                                            <span class="font-normal text-slate-500">| Unit 1 (guided)</span>
+                                        </div>
+                                        <span class="text-2xs text-slate-400">5/10/2026, 4:42:36 p.m.</span>
+                                    </div>
+                                    <div class="text-xs text-slate-600 dark:text-slate-300">
+                                        <strong>Scenario:</strong> Meeting at a Course | <strong>Turns:</strong> 1
+                                    </div>
+                                    <details class="text-2xs text-slate-500 mt-2">
+                                        <summary class="cursor-pointer font-bold text-emerald-600 dark:text-emerald-400">View Full Transcript (3 messages)</summary>
+                                        <div class="mt-2 p-3 bg-white dark:bg-navy-900 rounded-xl border border-slate-200 dark:border-slate-700 space-y-1.5 font-mono text-2xs max-h-48 overflow-y-auto">
+                                            <div><strong>AI:</strong> Hello! I'm your Classmate. Welcome! Are you ready to start?</div><div><strong>USER:</strong> i ready</div><div><strong>CORRECTION:</strong> Say: I am ready.</div>
+                                        </div>
+                                    </details>
+                                </div>
+                            
+                                <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 space-y-2">
+                                    <div class="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white">
+                                        <div class="flex items-center gap-2">
+                                            <i class="fa-solid fa-user-graduate text-emerald-500"></i>
+                                            <span>Learner 01</span>
+                                            <span class="font-normal text-slate-500">| Unit 1 (guided)</span>
+                                        </div>
+                                        <span class="text-2xs text-slate-400">5/10/2026, 4:42:36 p.m.</span>
+                                    </div>
+                                    <div class="text-xs text-slate-600 dark:text-slate-300">
+                                        <strong>Scenario:</strong> Meeting at a Course | <strong>Turns:</strong> 2
+                                    </div>
+                                    <details class="text-2xs text-slate-500 mt-2">
+                                        <summary class="cursor-pointer font-bold text-emerald-600 dark:text-emerald-400">View Full Transcript (5 messages)</summary>
+                                        <div class="mt-2 p-3 bg-white dark:bg-navy-900 rounded-xl border border-slate-200 dark:border-slate-700 space-y-1.5 font-mono text-2xs max-h-48 overflow-y-auto">
+                                            <div><strong>AI:</strong> Hello! I'm your Classmate. Welcome! Are you ready to start?</div><div><strong>USER:</strong> i ready</div><div><strong>CORRECTION:</strong> Say: I am ready.</div><div><strong>USER:</strong> i am ready</div><div><strong>AI:</strong> Great! My name is Sam. What is your name?</div>
+                                        </div>
+                                    </details>
+                                </div>
+                            
+                        </div>
+                    
+                </div>
+
+                <!-- SECTION 3: PAGE CODE / EXPORT (TEACHER ONLY) -->
+                <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+                        <div>
+                            <h3 class="text-base font-extrabold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-code text-indigo-500"></i> PAGE CODE / EXPORT
+                            </h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Export current client single-file source for backup or web deployment.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="flex gap-3">
+                            <button id="btn-copy-page-code" class="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl transition flex items-center gap-2 shadow-md">
+                                <i class="fa-solid fa-copy"></i> COPY PAGE CODE
+                            </button>
+                            <button id="btn-download-page-code" class="px-4 py-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs rounded-xl transition flex items-center gap-2">
+                                <i class="fa-solid fa-download"></i> DOWNLOAD index.html
+                            </button>
+                        </div>
+                        <p id="msg-export-status" class="text-xs font-semibold text-emerald-500 hidden">✓ Application HTML source code copied to clipboard!</p>
+                    </div>
+                </div>
+            </div></main>
+
+    <!-- MODALS & OVERLAYS CONTAINER -->
+
+    <!-- 1. Teacher Access Lock Modal -->
+    <div id="modal-teacher-lock" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 max-w-md w-full shadow-2xl space-y-5">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 text-amber-500">
+                    <i class="fa-solid fa-lock text-2xl"></i>
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white">PANEL DEL MAESTRO</h2>
+                </div>
+                <button class="btn-close-modal text-slate-400 hover:text-slate-600 dark:hover:text-white text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <p class="text-sm text-slate-600 dark:text-slate-300">
+                Ingrese el código de acceso del maestro.
+            </p>
+
+            <form id="form-teacher-login" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase mb-1">
+                        Código del maestro
+                    </label>
+                    <input type="password" id="input-teacher-code" placeholder="••••••" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white text-center tracking-widest text-lg font-mono focus:outline-none focus:ring-2 focus:ring-amber-500" required="" autofocus="">
+                    <p id="error-teacher-code" class="text-xs font-semibold text-rose-500 mt-1.5 hidden flex items-center gap-1">
+                        <i class="fa-solid fa-circle-exclamation"></i> Código incorrecto.
+                    </p>
+                </div>
+
+                <div class="flex gap-3 pt-2">
+                    <button type="button" class="btn-close-modal flex-1 px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="flex-1 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold transition shadow-lg shadow-amber-500/20">
+                        INGRESAR
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. Student Identity Modal -->
+    <div id="modal-student-id" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 max-w-md w-full shadow-2xl space-y-5">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 text-emerald-500">
+                    <i class="fa-solid fa-user-gear text-2xl"></i>
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white">Identificación del Estudiante</h2>
+                </div>
+                <button class="btn-close-modal text-slate-400 hover:text-slate-600 dark:hover:text-white text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <p class="text-sm text-slate-600 dark:text-slate-300">
+                Por favor, escribe tu nombre o número de lista para guardar tu progreso de práctica.
+            </p>
+
+            <form id="form-student-id" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase mb-1">
+                        STUDENT NAME
+                    </label>
+                    <input type="text" id="input-student-name-field" placeholder="e.g. Maria G. or Student 04" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white text-base font-medium focus:outline-none focus:ring-2 focus:ring-emerald-500" required="">
+                </div>
+
+                <div class="flex gap-3 pt-2">
+                    <button type="submit" class="w-full px-4 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold transition shadow-lg shadow-emerald-500/20">
+                        GUARDAR Y CONTINUAR
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 3. Contextual Speaking Support (HELP Modal) -->
+    <div id="modal-speaking-support" class="fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 max-w-lg w-full shadow-2xl space-y-5">
+            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+                <div class="flex items-center gap-3 text-amber-500">
+                    <i class="fa-solid fa-life-ring text-2xl"></i>
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900 dark:text-white">SPEAKING SUPPORT</h2>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Contextual help for A1 learners</p>
+                    </div>
+                </div>
+                <button id="btn-close-support" class="text-slate-400 hover:text-slate-600 dark:hover:text-white text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Support Choices -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <button id="help-btn-repeat" class="p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-emerald-500 dark:hover:border-emerald-500 bg-slate-50 dark:bg-slate-800/60 text-left transition flex items-start gap-3 group">
+                    <div class="p-2 rounded-xl bg-blue-500/10 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition">
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </div>
+                    <div>
+                        <div class="text-sm font-bold text-slate-800 dark:text-slate-200">Repeat Question</div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400">Hear the question again</div>
+                    </div>
+                </button>
+
+                <button id="help-btn-slower" class="p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-emerald-500 dark:hover:border-emerald-500 bg-slate-50 dark:bg-slate-800/60 text-left transition flex items-start gap-3 group">
+                    <div class="p-2 rounded-xl bg-purple-500/10 text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition">
+                        <i class="fa-solid fa-gauge-simple-low"></i>
+                    </div>
+                    <div>
+                        <div class="text-sm font-bold text-slate-800 dark:text-slate-200">Speak Slower</div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400">Hear at 0.6x speed</div>
+                    </div>
+                </button>
+
+                <button id="help-btn-starter" class="p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-emerald-500 dark:hover:border-emerald-500 bg-slate-50 dark:bg-slate-800/60 text-left transition flex items-start gap-3 group">
+                    <div class="p-2 rounded-xl bg-emerald-500/10 text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white transition">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div>
+                        <div class="text-sm font-bold text-slate-800 dark:text-slate-200">Sentence Starter</div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400">How to begin your reply</div>
+                    </div>
+                </button>
+
+                <button id="help-btn-spanish" class="p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-emerald-500 dark:hover:border-emerald-500 bg-slate-50 dark:bg-slate-800/60 text-left transition flex items-start gap-3 group">
+                    <div class="p-2 rounded-xl bg-amber-500/10 text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition">
+                        <i class="fa-solid fa-language"></i>
+                    </div>
+                    <div>
+                        <div class="text-sm font-bold text-slate-800 dark:text-slate-200">Explicación en Español</div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400">Breve guía de la pregunta</div>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Contextual Result Box -->
+            <div id="support-result-box" class="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 text-slate-800 dark:text-amber-200 hidden space-y-2">
+                <div class="flex items-center gap-2 font-bold text-sm text-amber-700 dark:text-amber-400">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span id="support-result-title">Help Tip</span>
+                </div>
+                <p id="support-result-body" class="text-sm leading-relaxed font-medium">
+                    Select an option above to receive contextual assistance.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase Script Imports (Module) -->
+    <script>
+        /* ====================================================================
+           PUBLIC BACKEND ADAPTER
+           Replaces Gemini-preview Firebase injection.
+           ==================================================================== */
+        window.__teacherToken = sessionStorage.getItem('asp_teacher_token') || '';
+
+        window.loadRemoteState = async function() {
+            try {
+                const settingsRes = await fetch('/api/settings', { cache: 'no-store' });
+                if (settingsRes.ok) {
+                    const settings = await settingsRes.json();
+                    if (typeof settings.unlockedUnits === 'number') {
+                        window.AppState.unlockedUnits = settings.unlockedUnits;
+                        window.saveLocalState();
+                    }
+                }
+
+                const sessionsRes = await fetch('/api/sessions', { cache: 'no-store' });
+                if (sessionsRes.ok) {
+                    const sessions = await sessionsRes.json();
+                    if (Array.isArray(sessions)) {
+                        window.AppState.savedSessions = sessions;
+                    }
+                }
+
+                if (window.renderCurrentView) window.renderCurrentView();
+            } catch (err) {
+                console.warn('Remote state unavailable; local state will be used:', err);
+            }
+        };
+
+        window.saveGlobalSettingsRemote = async function(unlockedUnits) {
+            try {
+                const res = await fetch('/api/settings', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${window.__teacherToken || ''}`
+                    },
+                    body: JSON.stringify({ unlockedUnits })
+                });
+                if (!res.ok) throw new Error('Could not save course settings.');
+            } catch (err) {
+                console.warn('Failed to sync remote settings:', err);
+            }
+        };
+
+        window.saveStudentSessionRemote = async function(sessionData) {
+            try {
+                const res = await fetch('/api/sessions', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(sessionData)
+                });
+                if (!res.ok) throw new Error('Could not save session.');
+            } catch (err) {
+                console.warn('Failed to sync student session:', err);
+            }
+        };
+
+        window.teacherLoginRemote = async function(code) {
+            const res = await fetch('/api/teacher-login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ code })
+            });
+            if (!res.ok) return false;
+            const data = await res.json();
+            window.__teacherToken = data.token || '';
+            sessionStorage.setItem('asp_teacher_token', window.__teacherToken);
+            return Boolean(window.__teacherToken);
+        };
+    </script>
+
+    <script>
+        /* ====================================================================
+           1. APPLICATION DATA & CURRICULUM DEFINITION (UNITS 1 - 12)
+           ==================================================================== */
+        const CURRICULUM = [
+            {
+                unit: 1,
+                title: "Meeting People",
+                needToKnow: [
+                    "Greetings: Hello, Hi, Good morning, Nice to meet you.",
+                    "Personal Info: What's your name? I'm... / My name is...",
+                    "Countries & Titles: Where are you from? I'm from Mexico. Mr., Ms."
+                ],
+                scenarios: [
+                    { id: "u1_s1", title: "Meeting at a Course", aiRole: "Classmate", situation: "You are on the first day of an adult English course.", goal: "Greet your classmate, introduce yourself, and share your country." },
+                    { id: "u1_s2", title: "Meeting at Work", aiRole: "New Coworker", situation: "You are at your workplace and meet a new colleague.", goal: "Welcome your new colleague and introduce yourself." },
+                    { id: "u1_s3", title: "Hotel Check-in", aiRole: "Receptionist", situation: "You arrive at a hotel front desk.", goal: "Give your name and spell your surname if asked." },
+                    { id: "u1_s4", title: "Exchanging Numbers", aiRole: "New Friend", situation: "You want to exchange contact info with a friend.", goal: "Ask and give your phone number (digits 0-10)." }
+                ]
+            },
+            {
+                unit: 2,
+                title: "My Week / Work / Studies",
+                needToKnow: [
+                    "Days & Simple Present: On Monday, I work. Do you study on Tuesday?",
+                    "Prices & Supermarket: How much is the milk? It's 35 pesos. I'll take it.",
+                    "Where & When: Where do you work? When do you study?"
+                ],
+                scenarios: [
+                    { id: "u2_s1", title: "At the Supermarket", aiRole: "Cashier", situation: "You are buying basic food items at the market.", goal: "Ask the price of milk or water, and pay." },
+                    { id: "u2_s2", title: "Weekly Schedule", aiRole: "Friend", situation: "Discussing work and study days with a friend.", goal: "Tell what days you work or study using 'ON [Day]'." },
+                    { id: "u2_s3", title: "Workplace Location", aiRole: "Colleague", situation: "Talking about work locations and distance.", goal: "Say where you work and if it's near or far." }
+                ]
+            },
+            {
+                unit: 3,
+                title: "My Brother's a Pilot",
+                needToKnow: [
+                    "Family Members: brother, sister, mother, father, parents, uncle.",
+                    "Occupations: doctor, mechanic, cashier, pilot, teacher, taxi driver.",
+                    "Possessives & What do you do?: My brother is a vet. What does he do?"
+                ],
+                scenarios: [
+                    { id: "u3_s1", title: "Family Photo Album", aiRole: "Co-worker", situation: "Showing family photos during break time.", goal: "Describe a family member and their job." },
+                    { id: "u3_s2", title: "Talking About Friends", aiRole: "Neighbor", situation: "Talking about your best friend.", goal: "Say their name, job, and if they are friendly or busy." }
+                ]
+            },
+            {
+                unit: 4,
+                title: "I Like That Coat",
+                needToKnow: [
+                    "Clothes & Colors: shirt, jacket, jeans, dress, sweater; red, blue, dark, light.",
+                    "Demonstratives: this coat, these shoes, that jacket, those boots.",
+                    "Shopping: I like that jacket. How much is it?"
+                ],
+                scenarios: [
+                    { id: "u4_s1", title: "Clothing Store", aiRole: "Store Assistant", situation: "You are shopping for a jacket or sweater.", goal: "Ask for a color and inquire about the price." },
+                    { id: "u4_s2", title: "Choosing an Outfit", aiRole: "Friend", situation: "Choosing clothes for a family dinner.", goal: "Express preferences using 'I like this/that'." }
+                ]
+            },
+            {
+                unit: 5,
+                title: "She Has Long Hair",
+                needToKnow: [
+                    "Physical Description: tall, short, blond hair, brown eyes, glasses, mustache.",
+                    "Be vs. Have: He IS tall. She HAS long brown hair.",
+                    "Respectful identification of colleagues or family."
+                ],
+                scenarios: [
+                    { id: "u5_s1", title: "Looking for Someone", aiRole: "Event Organizer", situation: "You are looking for your coworker at a conference.", goal: "Describe your coworker's appearance." },
+                    { id: "u5_s2", title: "Describing a Celebrity/Friend", aiRole: "Friend", situation: "Talking about a famous person or friend.", goal: "Describe their hair, eyes, and height." }
+                ]
+            },
+            {
+                unit: 6,
+                title: "Is That Your Phone?",
+                needToKnow: [
+                    "Belongings: cell phone, wallet, keys, laptop, charger, umbrella, bag.",
+                    "Possessive Pronouns: mine, yours, his, hers, ours.",
+                    "Lost & Found: Is this your wallet? Yes, it's mine."
+                ],
+                scenarios: [
+                    { id: "u6_s1", title: "Lost Item at Office", aiRole: "Security Guard", situation: "You left your keys or charger in a meeting room.", goal: "Ask if they found your belonging." },
+                    { id: "u6_s2", title: "Coffee Shop Table", aiRole: "Customer", situation: "Checking whose phone charger is on the table.", goal: "Identify whose item it is using 'mine' or 'yours'." }
+                ]
+            },
+            {
+                unit: 7,
+                title: "It's On the Sofa",
+                needToKnow: [
+                    "Rooms & Furniture: kitchen, bedroom, living room; sofa, desk, bed, table.",
+                    "Prepositions: in, on, under, next to, in front of, behind.",
+                    "Asking locations: Where is the charger? It's on the table."
+                ],
+                scenarios: [
+                    { id: "u7_s1", title: "Finding Items at Home", aiRole: "Family Member", situation: "You cannot find your keys or glasses at home.", goal: "Ask where the item is and use a preposition." },
+                    { id: "u7_s2", title: "Describing Your Room", aiRole: "Friend", situation: "Describing your home office or bedroom.", goal: "Mention 2 furniture items and their location." }
+                ]
+            },
+            {
+                unit: 8,
+                title: "There's a Park Near Here",
+                needToKnow: [
+                    "Neighborhood Places: bank, park, supermarket, pharmacy, gas station.",
+                    "There is / There are: Is there a bank near here? Yes, there's one on Main Street.",
+                    "Simple neighborhood services."
+                ],
+                scenarios: [
+                    { id: "u8_s1", title: "Asking a Visitor", aiRole: "Tourist/Visitor", situation: "A visitor asks you about places in your city.", goal: "Confirm if there is a pharmacy or bank nearby." },
+                    { id: "u8_s2", title: "New Neighborhood", aiRole: "Neighbor", situation: "You just moved to a new neighborhood.", goal: "Ask if there are good coffee shops or parks near." }
+                ]
+            },
+            {
+                unit: 9,
+                title: "Daily Routines and Time",
+                needToKnow: [
+                    "Routine Verbs: get up, take a shower, eat lunch, go to work, go to bed.",
+                    "Clock Times: at 7:00 AM, at 8:30 PM.",
+                    "Connectors: and, but, or."
+                ],
+                scenarios: [
+                    { id: "u9_s1", title: "Workday Schedule", aiRole: "Colleague", situation: "Comparing morning routines before work.", goal: "Tell what time you get up and go to work." },
+                    { id: "u9_s2", title: "Evening Habits", aiRole: "Classmate", situation: "Discussing evening free time after class.", goal: "Say what time you eat dinner and watch TV." }
+                ]
+            },
+            {
+                unit: 10,
+                title: "Free Time / Sports / Plans",
+                needToKnow: [
+                    "Suggestions: Let's play soccer! Let's watch a movie.",
+                    "Desires: I want to walk in the park. Do you want to join?",
+                    "Accepting/Declining: Sounds great! / Sorry, I'm busy."
+                ],
+                scenarios: [
+                    { id: "u10_s1", title: "Weekend Invitation", aiRole: "Friend", situation: "Making weekend plans with a friend.", goal: "Suggest an activity using 'Let's...' or 'I want to...'." },
+                    { id: "u10_s2", title: "Sports Interests", aiRole: "Coworker", situation: "Talking about favorite sports and activities.", goal: "Express what sports you like or want to play." }
+                ]
+            },
+            {
+                unit: 11,
+                title: "Directions",
+                needToKnow: [
+                    "Direction Verbs: Turn right, Turn left, Go straight, Walk two blocks.",
+                    "Locations: It's on the corner, It's across from the bank.",
+                    "Where is...?: Excuse me, where is the train station?"
+                ],
+                scenarios: [
+                    { id: "u11_s1", title: "Helping a Lost Tourist", aiRole: "Tourist", situation: "A tourist stops you on the street.", goal: "Give simple directions (Go straight, turn right)." },
+                    { id: "u11_s2", title: "Locating a Hospital/Pharmacy", aiRole: "Pedestrian", situation: "You are looking for an urgent pharmacy.", goal: "Ask where it is located and listen to simple directions." }
+                ]
+            },
+            {
+                unit: 12,
+                title: "Abilities",
+                needToKnow: [
+                    "Can / Can't: I can speak English. Can you drive a car?",
+                    "Action Verbs: drive, cook, swim, speak, use Excel, fix cars.",
+                    "Short Answers: Yes, I can. / No, I can't."
+                ],
+                scenarios: [
+                    { id: "u12_s1", title: "Job Skills Chat", aiRole: "Interviewer / Supervisor", situation: "Talking about practical skills for work.", goal: "State 2 things you can do and 1 thing you can't." },
+                    { id: "u12_s2", title: "Weekend Hobbies", aiRole: "Friend", situation: "Talking about music and sports skills.", goal: "Ask your friend what they can do." }
+                ]
+            }
+        ];
+
+        /* ====================================================================
+           2. GLOBAL APP STATE MANAGEMENT
+           ==================================================================== */
+        window.AppState = {
+            currentView: 'home', // 'home', 'unit-select', 'practice', 'teacher-dashboard', 'teacher-login'
+            studentName: localStorage.getItem('asp_student_name') || 'Learner 01',
+            unlockedUnits: parseInt(localStorage.getItem('asp_unlocked_units')) || 1,
+            isTeacherAuthenticated: false,
+            theme: localStorage.getItem('asp_theme') || 'dark', // 'dark' or 'light'
+            speechSpeed: parseFloat(localStorage.getItem('asp_speech_speed')) || 1.0,
+            
+            // Active Practice Session State
+            activeSession: {
+                unit: null,
+                scenario: null,
+                mode: 'guided', // 'guided' or 'challenge'
+                transcript: [], // { role: 'ai'|'user'|'correction', text: '', timestamp: '' }
+                startTime: null,
+                speakingTurns: 0,
+                pendingCorrectionRetry: false,
+                lastAiQuestion: ""
+            },
+            
+            // Saved Sessions for Teacher
+            savedSessions: JSON.parse(localStorage.getItem('asp_saved_sessions')) || []
+        };
+
+        // Save local persistent state
+        window.saveLocalState = function() {
+            localStorage.setItem('asp_student_name', window.AppState.studentName);
+            localStorage.setItem('asp_unlocked_units', window.AppState.unlockedUnits);
+            localStorage.setItem('asp_theme', window.AppState.theme);
+            localStorage.setItem('asp_speech_speed', window.AppState.speechSpeed);
+            localStorage.setItem('asp_saved_sessions', JSON.stringify(window.AppState.savedSessions));
+        };
+
+        /* ====================================================================
+           3. SPEECH RECOGNITION & SYNTHESIS CONTROLLER
+           ==================================================================== */
+        window.SpeechController = {
+            recognition: null,
+            synthesis: window.speechSynthesis,
+            isListening: false,
+            voice: null,
+
+            init() {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                if (SpeechRecognition) {
+                    this.recognition = new SpeechRecognition();
+                    this.recognition.continuous = false;
+                    this.recognition.interimResults = false;
+                    this.recognition.lang = 'en-US';
+
+                    this.recognition.onstart = () => {
+                        this.isListening = true;
+                        this.updateMicUI('listening');
+                    };
+
+                    this.recognition.onresult = (event) => {
+                        const transcript = event.results[0][0].transcript;
+                        this.isListening = false;
+                        this.updateMicUI('processing');
+                        window.handleUserSpeechCaptured(transcript);
+                    };
+
+                    this.recognition.onerror = (event) => {
+                        console.warn("Speech recognition error:", event.error);
+                        this.isListening = false;
+                        if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
+                            this.updateMicUI('blocked');
+                        } else {
+                            this.updateMicUI('idle');
+                        }
+                    };
+
+                    this.recognition.onend = () => {
+                        this.isListening = false;
+                        if (document.getElementById('mic-status-text')?.innerText === 'Listening...') {
+                            this.updateMicUI('idle');
+                        }
+                    };
+                } else {
+                    console.warn("Web Speech API Recognition not supported in this browser.");
+                }
+
+                // Load preferred English Voice
+                if (this.synthesis) {
+                    const loadVoices = () => {
+                        const voices = this.synthesis.getVoices();
+                        this.voice = voices.find(v => v.lang === 'en-US' && v.name.includes('Natural')) ||
+                                     voices.find(v => v.lang.startsWith('en-US')) ||
+                                     voices.find(v => v.lang.startsWith('en')) || null;
+                    };
+                    loadVoices();
+                    if (this.synthesis.onvoiceschanged !== undefined) {
+                        this.synthesis.onvoiceschanged = loadVoices;
+                    }
+                }
+            },
+
+            startListening() {
+                if (!this.recognition) {
+                    alert("Speech recognition is not supported in this browser version. Please type your answer or use Chrome.");
+                    return;
+                }
+                try {
+                    this.synthesis.cancel(); // Stop AI speaking if active
+                    this.recognition.start();
+                } catch (e) {
+                    this.recognition.stop();
+                    setTimeout(() => {
+                        try { this.recognition.start(); } catch(err){}
+                    }, 200);
+                }
+            },
+
+            stopListening() {
+                if (this.recognition && this.isListening) {
+                    this.recognition.stop();
+                    this.isListening = false;
+                    this.updateMicUI('idle');
+                }
+            },
+
+            speak(text, speedOverride, callback) {
+                if (!this.synthesis) return;
+                this.synthesis.cancel(); // stop any previous utterance
+
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = speedOverride || window.AppState.speechSpeed || 1.0;
+                utterance.pitch = 1.0;
+
+                if (this.voice) {
+                    utterance.voice = this.voice;
+                }
+
+                utterance.onstart = () => {
+                    this.updateMicUI('speaking');
+                };
+
+                utterance.onend = () => {
+                    this.updateMicUI('idle');
+                    if (callback) callback();
+                };
+
+                utterance.onerror = () => {
+                    this.updateMicUI('idle');
+                    if (callback) callback();
+                };
+
+                this.synthesis.speak(utterance);
+            },
+
+            updateMicUI(state) {
+                const micBtn = document.getElementById('btn-main-mic');
+                const statusBadge = document.getElementById('mic-status-badge');
+                const statusText = document.getElementById('mic-status-text');
+
+                if (!micBtn || !statusBadge || !statusText) return;
+
+                micBtn.classList.remove('mic-active', 'bg-emerald-500', 'bg-amber-500', 'bg-blue-500', 'bg-rose-500');
+
+                if (state === 'listening') {
+                    micBtn.classList.add('mic-active', 'bg-emerald-500');
+                    statusBadge.className = 'px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold animate-pulse';
+                    statusText.innerText = "Listening... Speak now!";
+                } else if (state === 'processing') {
+                    micBtn.classList.add('bg-amber-500');
+                    statusBadge.className = 'px-3 py-1 rounded-full bg-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold';
+                    statusText.innerText = "Thinking...";
+                } else if (state === 'speaking') {
+                    micBtn.classList.add('bg-blue-500');
+                    statusBadge.className = 'px-3 py-1 rounded-full bg-blue-500/20 text-blue-600 dark:text-blue-400 text-xs font-bold';
+                    statusText.innerText = "AI Speaking...";
+                } else if (state === 'blocked') {
+                    micBtn.classList.add('bg-rose-500');
+                    statusBadge.className = 'px-3 py-1 rounded-full bg-rose-500/20 text-rose-600 dark:text-rose-400 text-xs font-bold';
+                    statusText.innerText = "Mic blocked. Allow permission in browser settings.";
+                } else {
+                    micBtn.classList.add('bg-emerald-500');
+                    statusBadge.className = 'px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold';
+                    statusText.innerText = "Tap Mic to Speak";
+                }
+            }
+        };
+
+        /* ====================================================================
+           4. GEMINI AI DIALOGUE & PEDAGOGICAL EVALUATOR
+           ==================================================================== */
+        window.AIEngine = {
+            async generateResponse(scenario, mode, history, userSpeech) {
+                const apiUrl = `/api/gemini`;
+
+                const currentUnitNum = scenario.unitNum || 1;
+                
+                const systemPrompt = `You are a friendly, supportive English conversation partner for ADULT PRE-A1 / A1 learners.
+ROLE: ${scenario.aiRole} in the situation: "${scenario.situation}".
+CURRENT UNIT: Unit ${currentUnitNum} (${scenario.unitTitle || 'Pre-A1/A1 English'}).
+
+CRITICAL RULES:
+1. KEEP AI TURNS EXTREMELY SHORT (1 to 2 short sentences max).
+2. Use ONLY Pre-A1 / A1 simple vocabulary and simple present / basic structures from Units 1 to ${currentUnitNum}.
+3. Ask clear, direct, short questions. One communicative idea at a time.
+4. Adapt naturally to learner choices (e.g., if they choose a product/person, follow their choice).
+
+PEDAGOGICAL CORRECTION RULE (For Mode: ${mode}):
+${mode === 'guided' ? `
+Check if user made an important error:
+a) WHERE vs WHEN confusion (e.g. AI asks 'When do you work?' and user answers 'At a gas station'). If yes, correction must explicitly say: "That tells me WHERE you work. I asked WHEN — the day or time."
+b) Major grammar error affecting comprehension or studied grammar (e.g., "I work in Monday" -> "Say: I work ON Monday.").
+If an error occurred, output JSON with "hasCorrection": true, "correctionText": "...", "retryPrompt": "..."
+` : 'In challenge mode, do not interrupt. Just continue naturally.'}
+
+OUTPUT FORMAT MUST BE VALID JSON:
+{
+  "hasCorrection": boolean,
+  "correctionText": "short clear correction message or empty",
+  "aiReply": "short next conversational response from AI in English",
+  "spanishHelp": "brief explanation in Spanish of what the AI asked",
+  "sentenceStarter": "a 2-3 word starter for the student to reply"
+}`;
+
+                const promptPayload = {
+                    contents: [
+                        {
+                            role: "user",
+                            parts: [
+                                { text: `Conversation History:\n${JSON.stringify(history)}\n\nStudent just said: "${userSpeech}"` }
+                            ]
+                        }
+                    ],
+                    systemInstruction: {
+                        parts: [{ text: systemPrompt }]
+                    },
+                    generationConfig: {
+                        responseMimeType: "application/json"
+                    }
+                };
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(promptPayload)
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        const jsonText = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                        if (jsonText) {
+                            return JSON.parse(jsonText);
+                        }
+                    }
+                } catch (e) {
+                    console.warn("Gemini API call warning, falling back to local adaptive generator:", e);
+                }
+
+                // Rule-based Fallback Engine if offline/throttled
+                return this.fallbackGenerator(scenario, mode, history, userSpeech);
+            },
+
+            fallbackGenerator(scenario, mode, history, userSpeech) {
+                const lower = userSpeech.toLowerCase();
+                let hasCorrection = false;
+                let correctionText = "";
+
+                // Rule: Where vs When check
+                const lastAi = (history.length > 0) ? history[history.length - 1].text : "";
+                if (lastAi.toLowerCase().includes("when") && (lower.includes("at ") || lower.includes("in a ") || lower.includes("hospital") || lower.includes("station") || lower.includes("store"))) {
+                    hasCorrection = true;
+                    correctionText = "That tells me WHERE. I asked WHEN — the day or time (e.g. On Monday, at 8:00 AM).";
+                } else if (lower.includes("in monday") || lower.includes("in tuesday")) {
+                    hasCorrection = true;
+                    correctionText = "Say: ON Monday (use 'ON' for days).";
+                }
+
+                const replies = [
+                    "I see! That is very interesting. And what time do you start?",
+                    "Great! Thank you for sharing. Anything else you need today?",
+                    "Nice! That sounds very good. How about your weekend?",
+                    "Got it! Perfect. Let's continue. Can you tell me more?"
+                ];
+                const aiReply = replies[Math.floor(Math.random() * replies.length)];
+
+                return {
+                    hasCorrection: (mode === 'guided' && hasCorrection),
+                    correctionText: correctionText,
+                    aiReply: aiReply,
+                    spanishHelp: "El interlocutor está continuando la conversación. Responde con oraciones cortas.",
+                    sentenceStarter: "I usually..."
+                };
+            }
+        };
+
+        /* ====================================================================
+           5. VIEW RENDERERS & NAVIGATION
+           ==================================================================== */
+
+        // Theme Switcher Initialization
+        window.initTheme = function() {
+            if (window.AppState.theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        };
+
+        window.toggleTheme = function() {
+            window.AppState.theme = window.AppState.theme === 'dark' ? 'light' : 'dark';
+            window.saveLocalState();
+            window.initTheme();
+        };
+
+        // Render Current Active View
+        window.renderCurrentView = function() {
+            const viewport = document.getElementById('app-viewport');
+            const btnBack = document.getElementById('btn-header-back');
+            document.getElementById('header-student-name').innerText = window.AppState.studentName;
+
+            // Header Back Button visibility
+            if (window.AppState.currentView === 'home') {
+                btnBack.classList.add('hidden');
+            } else {
+                btnBack.classList.remove('hidden');
+            }
+
+            switch(window.AppState.currentView) {
+                case 'home':
+                    viewport.innerHTML = renderHomeView();
+                    attachHomeListeners();
+                    break;
+                case 'unit-select':
+                    viewport.innerHTML = renderUnitSelectView();
+                    attachUnitSelectListeners();
+                    break;
+                case 'practice':
+                    viewport.innerHTML = renderPracticeView();
+                    attachPracticeListeners();
+                    break;
+                case 'teacher-dashboard':
+                    viewport.innerHTML = renderTeacherDashboardView();
+                    attachTeacherDashboardListeners();
+                    break;
+                default:
+                    viewport.innerHTML = renderHomeView();
+                    attachHomeListeners();
+            }
+        };
+
+        /* --------------------------------------------------------------------
+           VIEW 1: HOME VIEW
+           -------------------------------------------------------------------- */
+        function renderHomeView() {
+            return `
+            <div class="max-w-3xl mx-auto w-full space-y-6 py-4">
+                <!-- Welcome Banner -->
+                <div class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white p-6 rounded-3xl shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="space-y-1 text-center sm:text-left">
+                        <span class="px-3 py-1 rounded-full bg-white/20 text-xs font-bold uppercase tracking-wider">Pre-A1 / A1 Level</span>
+                        <h2 class="text-2xl font-extrabold">Welcome, ${window.AppState.studentName}!</h2>
+                        <p class="text-emerald-100 text-sm">Real AI voice practice for adult English learners.</p>
+                    </div>
+                    <button id="btn-change-student-home" class="px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-2xl text-xs font-bold transition flex items-center gap-2">
+                        <i class="fa-solid fa-id-card"></i> Change ID
+                    </button>
+                </div>
+
+                <!-- Three Main Action Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Card 1: Practice by Unit -->
+                    <button id="card-practice-unit" class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 dark:hover:border-emerald-500 p-6 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-200 text-left flex flex-col justify-between group">
+                        <div class="space-y-3">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-2xl group-hover:bg-emerald-500 group-hover:text-white transition">
+                                <i class="fa-solid fa-book-open"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Practice by Unit</h3>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Units 1 to ${window.AppState.unlockedUnits} Unlocked</p>
+                            </div>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between text-xs font-bold text-emerald-600 dark:text-emerald-400">
+                            <span>Select Unit</span>
+                            <i class="fa-solid fa-chevron-right group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </button>
+
+                    <!-- Card 2: Weekend Practice -->
+                    <button id="card-weekend-practice" class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 hover:border-amber-500 dark:hover:border-amber-500 p-6 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-200 text-left flex flex-col justify-between group">
+                        <div class="space-y-3">
+                            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-2xl group-hover:bg-amber-500 group-hover:text-white transition">
+                                <i class="fa-solid fa-mug-hot"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Weekend Practice</h3>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Real-life weekend integration from unlocked units</p>
+                            </div>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between text-xs font-bold text-amber-600 dark:text-amber-400">
+                            <span>Start Challenge</span>
+                            <i class="fa-solid fa-chevron-right group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </button>
+
+                    <!-- Card 3: Surprise Me! -->
+                    <button id="card-surprise-me" class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 hover:border-purple-500 dark:hover:border-purple-500 p-6 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-200 text-left flex flex-col justify-between group">
+                        <div class="space-y-3">
+                            <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-500 flex items-center justify-center text-2xl group-hover:bg-purple-500 group-hover:text-white transition">
+                                <i class="fa-solid fa-dice"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Surprise Me!</h3>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Random real scenario using learned vocabulary</p>
+                            </div>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between text-xs font-bold text-purple-600 dark:text-purple-400">
+                            <span>Random Scenario</span>
+                            <i class="fa-solid fa-chevron-right group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Unlocked Units Status Overview -->
+                <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500"></i> Course Progression
+                        </h3>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                            ${window.AppState.unlockedUnits} of 12 Units Unlocked
+                        </span>
+                    </div>
+                    <div class="grid grid-cols-4 sm:grid-cols-6 gap-2">
+                        ${CURRICULUM.map(u => {
+                            const isUnlocked = u.unit <= window.AppState.unlockedUnits;
+                            return `
+                                <div class="p-3 rounded-2xl text-center border ${isUnlocked ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-700 dark:text-emerald-400 font-bold' : 'bg-slate-100 dark:bg-slate-800/40 border-slate-200 dark:border-slate-800 text-slate-400 opacity-60'}">
+                                    <div class="text-xs">U${u.unit}</div>
+                                    <i class="fa-solid ${isUnlocked ? 'fa-lock-open text-xs' : 'fa-lock text-2xs'}"></i>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        function attachHomeListeners() {
+            document.getElementById('btn-change-student-home')?.addEventListener('click', () => {
+                document.getElementById('modal-student-id').classList.remove('hidden');
+            });
+
+            document.getElementById('card-practice-unit')?.addEventListener('click', () => {
+                window.AppState.currentView = 'unit-select';
+                window.renderCurrentView();
+            });
+
+            document.getElementById('card-weekend-practice')?.addEventListener('click', () => {
+                startSpecialPractice('weekend');
+            });
+
+            document.getElementById('card-surprise-me')?.addEventListener('click', () => {
+                startSpecialPractice('surprise');
+            });
+        }
+
+        /* --------------------------------------------------------------------
+           VIEW 2: UNIT & SCENARIO SELECTION VIEW
+           -------------------------------------------------------------------- */
+        function renderUnitSelectView() {
+            return `
+            <div class="max-w-4xl mx-auto w-full space-y-6 py-2">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white">PRACTICE BY UNIT</h2>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Choose an unlocked unit and scenario</p>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    ${CURRICULUM.map(u => {
+                        const isUnlocked = u.unit <= window.AppState.unlockedUnits;
+                        if (!isUnlocked) {
+                            return `
+                            <div class="bg-slate-200/50 dark:bg-navy-900/40 border border-slate-300/50 dark:border-slate-800/60 rounded-3xl p-5 opacity-60 flex items-center justify-between">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-2xl bg-slate-300 dark:bg-slate-800 text-slate-500 flex items-center justify-center font-extrabold text-lg">
+                                        ${u.unit}
+                                    </div>
+                                    <div>
+                                        <h3 class="text-base font-bold text-slate-700 dark:text-slate-400">UNIT ${u.unit} — ${u.title}</h3>
+                                        <p class="text-xs text-slate-500"><i class="fa-solid fa-lock"></i> Locked by Teacher</p>
+                                    </div>
+                                </div>
+                            </div>`;
+                        }
+
+                        return `
+                        <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm space-y-5">
+                            <!-- Unit Header -->
+                            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
+                                <div class="flex items-center gap-3">
+                                    <span class="px-3.5 py-1.5 rounded-2xl bg-emerald-500 text-white font-extrabold text-sm">
+                                        UNIT ${u.unit}
+                                    </span>
+                                    <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">${u.title}</h3>
+                                </div>
+                                <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full">
+                                    Unlocked
+                                </span>
+                            </div>
+
+                            <!-- NEED TO KNOW Card -->
+                            <div class="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/50 rounded-2xl p-4 space-y-2">
+                                <div class="text-xs font-extrabold text-amber-700 dark:text-amber-400 uppercase tracking-wider flex items-center gap-2">
+                                    <i class="fa-solid fa-lightbulb"></i> NEED TO KNOW
+                                </div>
+                                <ul class="text-xs text-slate-700 dark:text-amber-100/90 space-y-1 list-disc list-inside">
+                                    ${u.needToKnow.map(k => `<li>${k}</li>`).join('')}
+                                </ul>
+                            </div>
+
+                            <!-- CHOOSE SCENARIO Grid -->
+                            <div class="space-y-3">
+                                <div class="text-xs font-bold text-slate-500 uppercase tracking-wider">CHOOSE SCENARIO</div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    ${u.scenarios.map(sc => `
+                                        <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-emerald-500 dark:hover:border-emerald-500 bg-slate-50 dark:bg-slate-800/50 transition space-y-3 flex flex-col justify-between">
+                                            <div>
+                                                <div class="flex items-center justify-between">
+                                                    <h4 class="text-base font-bold text-slate-900 dark:text-white">${sc.title}</h4>
+                                                    <span class="text-2xs font-bold px-2 py-0.5 rounded-md bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
+                                                        Role: ${sc.aiRole}
+                                                    </span>
+                                                </div>
+                                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">${sc.situation}</p>
+                                                <div class="text-2xs text-emerald-600 dark:text-emerald-400 font-semibold mt-2">
+                                                    <strong>Goal:</strong> ${sc.goal}
+                                                </div>
+                                            </div>
+
+                                            <div class="flex gap-2 pt-2 border-t border-slate-200/60 dark:border-slate-700/60">
+                                                <button onclick="startPracticeSession('${u.unit}', '${sc.id}', 'guided')" class="flex-1 py-2 px-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs transition text-center shadow-md shadow-emerald-500/20">
+                                                    GUIDED PRACTICE
+                                                </button>
+                                                <button onclick="startPracticeSession('${u.unit}', '${sc.id}', 'challenge')" class="py-2 px-3 rounded-xl border border-amber-500 text-amber-600 dark:text-amber-400 hover:bg-amber-500/10 font-bold text-xs transition text-center">
+                                                    CHALLENGE
+                                                </button>
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>`;
+                    }).join('')}
+                </div>
+            </div>`;
+        }
+
+        function attachUnitSelectListeners() {
+            // Handled via global functions exposed to window
+        }
+
+        /* --------------------------------------------------------------------
+           VIEW 3: ACTIVE PRACTICE SCREEN (GUIDED & CHALLENGE)
+           -------------------------------------------------------------------- */
+        function renderPracticeView() {
+            const sess = window.AppState.activeSession;
+            const scenario = sess.scenario;
+            const mode = sess.mode;
+
+            return `
+            <div class="max-w-3xl mx-auto w-full flex-1 flex flex-col justify-between py-2 space-y-4">
+                
+                <!-- Practice Header Info Card -->
+                <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-4 shadow-sm space-y-3">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="px-3 py-1 rounded-full ${mode === 'guided' ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400' : 'bg-amber-500/10 text-amber-600 dark:text-amber-400'} text-xs font-extrabold uppercase">
+                                ${mode === 'guided' ? 'Guided Practice' : 'Speaking Challenge'}
+                            </span>
+                            <span class="text-xs font-bold text-slate-500">Unit ${sess.unit}</span>
+                        </div>
+                        <button id="btn-practice-exit" class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-bold transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-right-from-bracket"></i> EXIT
+                        </button>
+                    </div>
+
+                    <div class="space-y-1">
+                        <h3 class="text-lg font-extrabold text-slate-900 dark:text-white">${scenario.title}</h3>
+                        <div class="text-xs text-slate-600 dark:text-slate-300 flex flex-wrap gap-x-4 gap-y-1">
+                            <span><strong>AI Role:</strong> ${scenario.aiRole}</span>
+                            <span><strong>Situation:</strong> ${scenario.situation}</span>
+                        </div>
+                        <div class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold pt-1">
+                            <strong>Your Goal:</strong> ${scenario.goal}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Transcript Scroll Container -->
+                <div id="chat-transcript-container" class="flex-1 bg-slate-50 dark:bg-navy-900/40 border border-slate-200 dark:border-slate-800/80 rounded-3xl p-4 overflow-y-auto min-h-[260px] max-h-[420px] space-y-4">
+                    ${renderTranscriptMessages(sess.transcript)}
+                </div>
+
+                <!-- Control Bar & Microphone Floating Deck -->
+                <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-4 shadow-xl space-y-4">
+                    
+                    <!-- Speed Control & Helper Toolbar -->
+                    <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+                        <!-- Voice Speed Control -->
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-2xs font-bold text-slate-400 uppercase mr-1">Speed:</span>
+                            ${[1.0, 0.8, 0.7, 0.6].map(spd => `
+                                <button onclick="setSpeechSpeed(${spd})" class="px-2.5 py-1 rounded-lg text-xs font-bold transition ${window.AppState.speechSpeed === spd ? 'bg-emerald-500 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200'}">
+                                    ${spd}x
+                                </button>
+                            `).join('')}
+                        </div>
+
+                        <!-- HELP & Listen Again Buttons -->
+                        <div class="flex items-center gap-2">
+                            <button id="btn-listen-again" class="px-3 py-1.5 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 hover:bg-blue-500/20 text-xs font-bold transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-volume-high"></i> Listen Again
+                            </button>
+                            <button id="btn-open-help" class="px-3.5 py-1.5 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500/20 text-xs font-bold transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-circle-question"></i> HELP
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Main Mic Button & Speech Controls -->
+                    <div class="flex flex-col items-center justify-center space-y-3 py-1">
+                        <button id="btn-main-mic" class="w-20 h-20 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center text-3xl shadow-xl shadow-emerald-500/30 transition-transform active:scale-95">
+                            <i class="fa-solid fa-microphone"></i>
+                        </button>
+                        
+                        <div id="mic-status-badge" class="px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold">
+                            <span id="mic-status-text">Tap Mic to Speak</span>
+                        </div>
+                    </div>
+
+                    <!-- Manual Text Fallback Drawer for Speech-to-Text Fallback -->
+                    <details class="text-center">
+                        <summary class="text-2xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer">Keyboard fallback (if mic is silent)</summary>
+                        <form id="form-text-fallback" class="mt-2 flex gap-2">
+                            <input type="text" id="input-text-fallback" placeholder="Type your answer here..." class="flex-1 px-3 py-2 text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white" />
+                            <button type="submit" class="px-3 py-2 bg-emerald-500 text-white rounded-xl text-xs font-bold">Send</button>
+                        </form>
+                    </details>
+                </div>
+            </div>`;
+        }
+
+        function renderTranscriptMessages(transcript) {
+            if (!transcript || transcript.length === 0) {
+                return `<div class="text-center text-xs text-slate-400 py-8">Initializing AI voice conversation...</div>`;
+            }
+
+            return transcript.map(m => {
+                if (m.role === 'ai') {
+                    return `
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center font-bold text-sm shrink-0">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div class="bg-white dark:bg-navy-800 border border-slate-200 dark:border-slate-700/80 p-4 rounded-2xl rounded-tl-none max-w-[85%] shadow-sm space-y-1">
+                            <div class="text-2xs font-extrabold text-slate-400 uppercase tracking-wider">AI Conversation Partner</div>
+                            <p class="text-sm sm:text-base font-semibold text-slate-900 dark:text-white leading-relaxed">${m.text}</p>
+                        </div>
+                    </div>`;
+                } else if (m.role === 'user') {
+                    return `
+                    <div class="flex items-start justify-end gap-3">
+                        <div class="bg-emerald-600 text-white p-4 rounded-2xl rounded-tr-none max-w-[85%] shadow-sm space-y-1">
+                            <div class="text-2xs font-extrabold text-emerald-200 uppercase tracking-wider">You (Student)</div>
+                            <p class="text-sm sm:text-base font-medium leading-relaxed">${m.text}</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-xl bg-emerald-500 text-white flex items-center justify-center font-bold text-sm shrink-0">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                    </div>`;
+                } else if (m.role === 'correction') {
+                    return `
+                    <div class="my-3 p-4 rounded-2xl bg-amber-500/10 border-2 border-amber-500/60 dark:bg-amber-950/40 text-slate-900 dark:text-amber-100 space-y-2">
+                        <div class="flex items-center gap-2 font-extrabold text-xs text-amber-600 dark:text-amber-400 uppercase tracking-wider">
+                            <i class="fa-solid fa-triangle-exclamation"></i> CORRECTION
+                        </div>
+                        <p class="text-sm font-bold text-amber-900 dark:text-amber-200">${m.text}</p>
+                        <div class="pt-1 flex items-center justify-between text-xs font-semibold text-amber-700 dark:text-amber-300">
+                            <span>TRY AGAIN: Repeat your reply correctly now</span>
+                            <i class="fa-solid fa-rotate-right"></i>
+                        </div>
+                    </div>`;
+                }
+            }).join('');
+        }
+
+        function attachPracticeListeners() {
+            // Main Mic Button
+            document.getElementById('btn-main-mic')?.addEventListener('click', () => {
+                window.SpeechController.startListening();
+            });
+
+            // Listen Again Button
+            document.getElementById('btn-listen-again')?.addEventListener('click', () => {
+                const lastAiMsg = [...window.AppState.activeSession.transcript].reverse().find(m => m.role === 'ai');
+                if (lastAiMsg) {
+                    window.SpeechController.speak(lastAiMsg.text);
+                }
+            });
+
+            // Help Modal Trigger
+            document.getElementById('btn-open-help')?.addEventListener('click', () => {
+                document.getElementById('modal-speaking-support').classList.remove('hidden');
+            });
+
+            // Exit Button
+            document.getElementById('btn-practice-exit')?.addEventListener('click', () => {
+                window.SpeechController.stopListening();
+                if (window.speechSynthesis) window.speechSynthesis.cancel();
+                window.AppState.currentView = 'home';
+                window.renderCurrentView();
+            });
+
+            // Text Fallback Form
+            document.getElementById('form-text-fallback')?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const field = document.getElementById('input-text-fallback');
+                if (field && field.value.trim()) {
+                    const text = field.value.trim();
+                    field.value = '';
+                    window.handleUserSpeechCaptured(text);
+                }
+            });
+
+            // Auto-scroll transcript to bottom
+            const container = document.getElementById('chat-transcript-container');
+            if (container) container.scrollTop = container.scrollHeight;
+        }
+
+        /* --------------------------------------------------------------------
+           VIEW 4: TEACHER DASHBOARD VIEW (AUTHENTICATED)
+           -------------------------------------------------------------------- */
+        function renderTeacherDashboardView() {
+            const unlocked = window.AppState.unlockedUnits;
+            const sessions = window.AppState.savedSessions;
+
+            return `
+            <div class="max-w-4xl mx-auto w-full space-y-6 py-2">
+                <div class="flex items-center justify-between bg-amber-500/10 border border-amber-500/30 p-5 rounded-3xl">
+                    <div class="flex items-center gap-3 text-amber-600 dark:text-amber-400">
+                        <i class="fa-solid fa-lock-open text-2xl"></i>
+                        <div>
+                            <h2 class="text-xl font-extrabold text-slate-900 dark:text-white">PANEL DEL MAESTRO</h2>
+                            <p class="text-xs text-slate-600 dark:text-slate-300">Teacher controls & student progress logs</p>
+                        </div>
+                    </div>
+                    <button id="btn-teacher-logout" class="px-4 py-2 bg-amber-500 text-slate-950 hover:bg-amber-600 font-bold text-xs rounded-xl transition shadow-md">
+                        LOG OUT OF TEACHER MODE
+                    </button>
+                </div>
+
+                <!-- SECTION 1: COURSE ACCESS (UNLOCKED UNITS CONTROL) -->
+                <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-base font-extrabold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-key text-amber-500"></i> Course Access Settings
+                        </h3>
+                        <span class="text-xs font-semibold text-slate-500">Shared Global Availability</span>
+                    </div>
+
+                    <p class="text-xs text-slate-600 dark:text-slate-400">
+                        Select the highest unit available to students. (e.g. Selecting Unit 4 unlocks Units 1–4).
+                    </p>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2">
+                        ${Array.from({length: 12}, (_, i) => i + 1).map(uNum => `
+                            <button onclick="updateCourseAccess(${uNum})" class="py-3 px-3 rounded-2xl border font-bold text-xs flex items-center justify-between transition ${uNum <= unlocked ? 'bg-emerald-500 text-white border-emerald-500 shadow-md' : 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-200'}">
+                                <span>Through Unit ${uNum}</span>
+                                <i class="fa-solid ${uNum <= unlocked ? 'fa-check' : 'fa-lock'}"></i>
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- SECTION 2: STUDENT ACTIVITY & SAVED CONVERSATIONS -->
+                <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-base font-extrabold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-chart-line text-emerald-500"></i> Student Activity Logs
+                        </h3>
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600">${sessions.length} Recorded Practice Sessions</span>
+                    </div>
+
+                    ${sessions.length === 0 ? `
+                        <div class="text-center py-8 text-slate-400 text-xs font-medium">No student practice history recorded yet.</div>
+                    ` : `
+                        <div class="space-y-3 max-h-[360px] overflow-y-auto pr-1">
+                            ${sessions.map((s, idx) => `
+                                <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 space-y-2">
+                                    <div class="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white">
+                                        <div class="flex items-center gap-2">
+                                            <i class="fa-solid fa-user-graduate text-emerald-500"></i>
+                                            <span>${s.studentName || 'Student'}</span>
+                                            <span class="font-normal text-slate-500">| Unit ${s.unit} (${s.mode})</span>
+                                        </div>
+                                        <span class="text-2xs text-slate-400">${new Date(s.date).toLocaleString()}</span>
+                                    </div>
+                                    <div class="text-xs text-slate-600 dark:text-slate-300">
+                                        <strong>Scenario:</strong> ${s.scenarioTitle || 'Practice'} | <strong>Turns:</strong> ${s.speakingTurns || 0}
+                                    </div>
+                                    <details class="text-2xs text-slate-500 mt-2">
+                                        <summary class="cursor-pointer font-bold text-emerald-600 dark:text-emerald-400">View Full Transcript (${s.transcript?.length || 0} messages)</summary>
+                                        <div class="mt-2 p-3 bg-white dark:bg-navy-900 rounded-xl border border-slate-200 dark:border-slate-700 space-y-1.5 font-mono text-2xs max-h-48 overflow-y-auto">
+                                            ${s.transcript ? s.transcript.map(t => `<div><strong>${t.role.toUpperCase()}:</strong> ${t.text}</div>`).join('') : ''}
+                                        </div>
+                                    </details>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `}
+                </div>
+
+                <!-- SECTION 3: PAGE CODE / EXPORT (TEACHER ONLY) -->
+                <div class="bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+                        <div>
+                            <h3 class="text-base font-extrabold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-code text-indigo-500"></i> PAGE CODE / EXPORT
+                            </h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Export current client single-file source for backup or web deployment.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="flex gap-3">
+                            <button id="btn-copy-page-code" class="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl transition flex items-center gap-2 shadow-md">
+                                <i class="fa-solid fa-copy"></i> COPY PAGE CODE
+                            </button>
+                            <button id="btn-download-page-code" class="px-4 py-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs rounded-xl transition flex items-center gap-2">
+                                <i class="fa-solid fa-download"></i> DOWNLOAD index.html
+                            </button>
+                        </div>
+                        <p id="msg-export-status" class="text-xs font-semibold text-emerald-500 hidden"></p>
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        function attachTeacherDashboardListeners() {
+            document.getElementById('btn-teacher-logout')?.addEventListener('click', () => {
+                window.AppState.isTeacherAuthenticated = false;
+                window.AppState.currentView = 'home';
+                window.renderCurrentView();
+            });
+
+            document.getElementById('btn-copy-page-code')?.addEventListener('click', () => {
+                const fullHtml = document.documentElement.outerHTML;
+                const dummy = document.createElement('textarea');
+                dummy.value = "<!DOCTYPE html>\n<html lang=\"en\" class=\"h-full\">\n" + fullHtml + "\n</html>";
+                document.body.appendChild(dummy);
+                dummy.select();
+                document.execCommand('copy');
+                document.body.removeChild(dummy);
+
+                const status = document.getElementById('msg-export-status');
+                if (status) {
+                    status.innerText = "✓ Application HTML source code copied to clipboard!";
+                    status.classList.remove('hidden');
+                    setTimeout(() => status.classList.add('hidden'), 3000);
+                }
+            });
+
+            document.getElementById('btn-download-page-code')?.addEventListener('click', () => {
+                const fullHtml = "<!DOCTYPE html>\n<html lang=\"en\" class=\"h-full\">\n" + document.documentElement.outerHTML + "\n</html>";
+                const blob = new Blob([fullHtml], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'index.html';
+                a.click();
+                URL.revokeObjectURL(url);
+            });
+        }
+
+        /* ====================================================================
+           6. PRACTICE SESSION & DIALOGUE CONTROLLER
+           ==================================================================== */
+        window.startPracticeSession = function(unitNum, scenarioId, mode) {
+            unitNum = parseInt(unitNum);
+            const unitData = CURRICULUM.find(u => u.unit === unitNum);
+            const scenario = unitData ? unitData.scenarios.find(s => s.id === scenarioId) : null;
+
+            if (!scenario) return;
+
+            scenario.unitNum = unitNum;
+            scenario.unitTitle = unitData.title;
+
+            window.AppState.activeSession = {
+                unit: unitNum,
+                scenario: scenario,
+                mode: mode,
+                transcript: [],
+                startTime: new Date().toISOString(),
+                speakingTurns: 0,
+                pendingCorrectionRetry: false,
+                lastAiQuestion: ""
+            };
+
+            window.AppState.currentView = 'practice';
+            window.renderCurrentView();
+
+            // AI Opening Salutation
+            const initialAiText = `Hello! I'm your ${scenario.aiRole}. Welcome! Are you ready to start?`;
+            pushTranscriptMessage('ai', initialAiText);
+            window.AppState.activeSession.lastAiQuestion = initialAiText;
+            window.SpeechController.speak(initialAiText);
+        };
+
+        window.startSpecialPractice = function(type) {
+            const unlocked = window.AppState.unlockedUnits;
+            const availableUnits = CURRICULUM.filter(u => u.unit <= unlocked);
+            const randomUnit = availableUnits[Math.floor(Math.random() * availableUnits.length)];
+            const randomScenario = randomUnit.scenarios[Math.floor(Math.random() * randomUnit.scenarios.length)];
+
+            if (type === 'weekend') {
+                randomScenario.title = "Weekend Practice: " + randomScenario.title;
+            } else {
+                randomScenario.title = "Surprise Me: " + randomScenario.title;
+            }
+
+            window.startPracticeSession(randomUnit.unit, randomScenario.id, 'guided');
+        };
+
+        window.handleUserSpeechCaptured = async function(userSpeechText) {
+            if (!userSpeechText || !userSpeechText.trim()) return;
+
+            const sess = window.AppState.activeSession;
+            sess.speakingTurns++;
+
+            // Push Student Turn
+            pushTranscriptMessage('user', userSpeechText);
+
+            // Fetch AI Response via Gemini / Pedagogy Engine
+            const history = sess.transcript.map(t => ({ role: t.role, text: t.text }));
+            const aiResult = await window.AIEngine.generateResponse(sess.scenario, sess.mode, history, userSpeechText);
+
+            // Store contextual help information for the HELP modal
+            window.AppState.activeSession.contextualHelp = {
+                spanishHelp: aiResult.spanishHelp || "El interlocutor ha formulado una pregunta en inglés.",
+                sentenceStarter: aiResult.sentenceStarter || "I think..."
+            };
+
+            // Handle Correction in Guided Practice
+            if (aiResult.hasCorrection && aiResult.correctionText) {
+                pushTranscriptMessage('correction', aiResult.correctionText);
+                window.SpeechController.speak("Correction: " + aiResult.correctionText);
+            } else {
+                pushTranscriptMessage('ai', aiResult.aiReply);
+                sess.lastAiQuestion = aiResult.aiReply;
+                window.SpeechController.speak(aiResult.aiReply);
+            }
+
+            // Save Session State
+            window.saveCurrentSessionHistory();
+        };
+
+        function pushTranscriptMessage(role, text) {
+            window.AppState.activeSession.transcript.push({
+                role: role,
+                text: text,
+                timestamp: new Date().toISOString()
+            });
+            
+            // Re-render chat container
+            const container = document.getElementById('chat-transcript-container');
+            if (container) {
+                container.innerHTML = renderTranscriptMessages(window.AppState.activeSession.transcript);
+                container.scrollTop = container.scrollHeight;
+            }
+        }
+
+        window.saveCurrentSessionHistory = function() {
+            const sess = window.AppState.activeSession;
+            if (!sess.unit) return;
+
+            const sessionLog = {
+                id: 'sess_' + Date.now(),
+                studentName: window.AppState.studentName,
+                unit: sess.unit,
+                scenarioTitle: sess.scenario.title,
+                mode: sess.mode,
+                date: sess.startTime || new Date().toISOString(),
+                speakingTurns: sess.speakingTurns,
+                transcript: sess.transcript
+            };
+
+            window.AppState.savedSessions.unshift(sessionLog);
+            window.saveLocalState();
+
+            // Sync with Firebase Remote Firestore if online
+            if (window.saveStudentSessionRemote) {
+                window.saveStudentSessionRemote(sessionLog);
+            }
+        };
+
+        window.setSpeechSpeed = function(spd) {
+            window.AppState.speechSpeed = spd;
+            window.saveLocalState();
+            window.renderCurrentView();
+        };
+
+        window.updateCourseAccess = function(unitNum) {
+            window.AppState.unlockedUnits = unitNum;
+            window.saveLocalState();
+            if (window.saveGlobalSettingsRemote) {
+                window.saveGlobalSettingsRemote(unitNum);
+            }
+            window.renderCurrentView();
+        };
+
+        /* ====================================================================
+           7. GLOBAL EVENT LISTENERS & INITIALIZATION
+           ==================================================================== */
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Theme
+            window.initTheme();
+
+            // Initialize Speech Recognition & Synthesis
+            window.SpeechController.init();
+
+            // Load shared course settings and student evidence from the public backend.
+            setTimeout(() => window.loadRemoteState?.(), 0);
+
+            // Header Back Button Event
+            document.getElementById('btn-header-back')?.addEventListener('click', () => {
+                if (window.AppState.currentView === 'practice') {
+                    window.SpeechController.stopListening();
+                    if (window.speechSynthesis) window.speechSynthesis.cancel();
+                }
+                window.AppState.currentView = 'home';
+                window.renderCurrentView();
+            });
+
+            // Theme Toggle Button Event
+            document.getElementById('btn-theme-toggle')?.addEventListener('click', () => {
+                window.toggleTheme();
+            });
+
+            // Student ID Button Event
+            document.getElementById('btn-student-id')?.addEventListener('click', () => {
+                document.getElementById('modal-student-id').classList.remove('hidden');
+            });
+
+            // Teacher Lock Button Event
+            document.getElementById('btn-teacher-lock')?.addEventListener('click', () => {
+                if (window.AppState.isTeacherAuthenticated) {
+                    window.AppState.currentView = 'teacher-dashboard';
+                    window.renderCurrentView();
+                } else {
+                    document.getElementById('modal-teacher-lock').classList.remove('hidden');
+                    document.getElementById('input-teacher-code').focus();
+                }
+            });
+
+            // Close Modals Handling
+            document.querySelectorAll('.btn-close-modal').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.getElementById('modal-teacher-lock').classList.add('hidden');
+                    document.getElementById('modal-student-id').classList.add('hidden');
+                    document.getElementById('error-teacher-code').classList.add('hidden');
+                });
+            });
+
+            // Teacher Login Password Verification Form
+            document.getElementById('form-teacher-login')?.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const code = document.getElementById('input-teacher-code').value.trim();
+                const submitBtn = e.currentTarget.querySelector('button[type="submit"]');
+                if (submitBtn) submitBtn.disabled = true;
+
+                try {
+                    const ok = await window.teacherLoginRemote(code);
+                    if (ok) {
+                        window.AppState.isTeacherAuthenticated = true;
+                        document.getElementById('modal-teacher-lock').classList.add('hidden');
+                        document.getElementById('input-teacher-code').value = '';
+                        document.getElementById('error-teacher-code').classList.add('hidden');
+                        window.AppState.currentView = 'teacher-dashboard';
+                        await window.loadRemoteState();
+                        window.renderCurrentView();
+                    } else {
+                        document.getElementById('error-teacher-code').classList.remove('hidden');
+                    }
+                } catch (err) {
+                    console.warn('Teacher login failed:', err);
+                    document.getElementById('error-teacher-code').classList.remove('hidden');
+                } finally {
+                    if (submitBtn) submitBtn.disabled = false;
+                }
+            });
+
+            // Student Name Identification Form
+            document.getElementById('form-student-id')?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('input-student-name-field').value.trim();
+                if (name) {
+                    window.AppState.studentName = name;
+                    window.saveLocalState();
+                    document.getElementById('modal-student-id').classList.add('hidden');
+                    window.renderCurrentView();
+                }
+            });
+
+            // Speaking Support (HELP) Modal Handlers
+            document.getElementById('btn-close-support')?.addEventListener('click', () => {
+                document.getElementById('modal-speaking-support').classList.add('hidden');
+                document.getElementById('support-result-box').classList.add('hidden');
+            });
+
+            document.getElementById('help-btn-repeat')?.addEventListener('click', () => {
+                const lastAi = window.AppState.activeSession.lastAiQuestion || "Could you please tell me again?";
+                window.SpeechController.speak(lastAi);
+                showSupportResult("Repeat Question", `Listening to last question at normal speed: "${lastAi}"`);
+            });
+
+            document.getElementById('help-btn-slower')?.addEventListener('click', () => {
+                const lastAi = window.AppState.activeSession.lastAiQuestion || "Could you please tell me again?";
+                window.SpeechController.speak(lastAi, 0.6);
+                showSupportResult("Speak Slower", `Playing question at 0.6x slow speed: "${lastAi}"`);
+            });
+
+            document.getElementById('help-btn-starter')?.addEventListener('click', () => {
+                const starter = window.AppState.activeSession.contextualHelp?.sentenceStarter || "I am...";
+                showSupportResult("Sentence Starter", `Try starting your reply with: "${starter}"`);
+            });
+
+            document.getElementById('help-btn-spanish')?.addEventListener('click', () => {
+                const es = window.AppState.activeSession.contextualHelp?.spanishHelp || "Responde con oraciones simples en inglés usando el vocabulario estudiado.";
+                showSupportResult("Explicación en Español", es);
+            });
+
+            function showSupportResult(title, text) {
+                const box = document.getElementById('support-result-box');
+                document.getElementById('support-result-title').innerText = title;
+                document.getElementById('support-result-body').innerText = text;
+                box.classList.remove('hidden');
+            }
+
+            // Initial Render
+            window.renderCurrentView();
+        });
+    </script>
+
+</body></html>
+</html>
