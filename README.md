@@ -42,3 +42,13 @@ Never place the Gemini key directly in `public/index.html`.
 ## Storage note
 
 The included server stores class settings and session evidence in JSON files so the project works without Firebase. On hosting platforms with ephemeral filesystems, use persistent storage or a database before relying on the records long-term.
+
+
+## Feedback V2
+This update keeps the existing design and microphone, but changes the tutor logic:
+- Units 1–12 start directly in their scenario.
+- Guided Practice checks the learner before moving on.
+- Important errors trigger correction + retry.
+- The AI must answer relevant learner questions before continuing.
+- Generic unrelated replies were removed from the offline fallback.
+- Teacher session listing is protected by teacher authentication.

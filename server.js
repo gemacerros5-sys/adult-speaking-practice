@@ -88,7 +88,7 @@ app.put("/api/settings", requireTeacher, async (req, res) => {
   res.json(data);
 });
 
-app.get("/api/sessions", async (_req, res) => {
+app.get("/api/sessions", requireTeacher, async (_req, res) => {
   const sessions = await readJson(SESSIONS_FILE, []);
   res.json(Array.isArray(sessions) ? sessions : []);
 });
