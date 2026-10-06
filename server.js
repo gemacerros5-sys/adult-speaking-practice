@@ -126,7 +126,7 @@ app.get("/api/ai-test", async (_req, res) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         contents: [{ role: "user", parts: [{ text: "Reply with exactly: TUTOR_OK" }] }],
-        generationConfig: { temperature: 0, maxOutputTokens: 20 }
+        generationConfig: { thinkingConfig: { thinkingLevel: "minimal" }, maxOutputTokens: 200 }
       })
     });
     const data = await upstream.json().catch(() => ({}));
