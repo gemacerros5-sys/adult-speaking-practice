@@ -763,6 +763,7 @@
             recognition: null,
             synthesis: window.speechSynthesis,
             isListening: false,
+            isAIProcessing: false,
             voice: null,
 
             init() {
@@ -821,6 +822,8 @@
             },
 
             startListening() {
+                // Prevent duplicate Gemini requests while the previous learner turn is still processing.
+                if (this.isAIProcessing) return;
                 if (!this.recognition) {
                     alert("Speech recognition is not supported in this browser version. Please type your answer or use Chrome.");
                     return;
@@ -1034,51 +1037,66 @@ For action "continue":
                     }
                 };
 
-                try {
-                    const response = await fetch("/api/gemini", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(payload)
-                    });
-
-                    const result = await response.json().catch(() => null);
-                    if (!response.ok || !result) {
-                        console.error("Gemini request failed", response.status, result);
-                        return this.unavailable();
+                // Stability layer: one original request + up to two short automatic retries.
+                // We retry only transient failures (network, 429, or 5xx) and invalid/empty model output.
+                // The learner stays on the same turn and sees “Thinking...” instead of a false role-play reply.
+                const retryDelays = [0, 650, 1300];
+                for (let attempt = 0; attempt < retryDelays.length; attempt++) {
+                    if (retryDelays[attempt]) {
+                        await new Promise(resolve => setTimeout(resolve, retryDelays[attempt]));
                     }
-
-                    const raw = result?.candidates?.[0]?.content?.parts
-                        ?.map(p => p.text || "")
-                        .join("")
-                        .trim();
-
-                    if (!raw) {
-                        console.error("Gemini returned no text", result);
-                        return this.unavailable();
-                    }
-
-                    let parsed;
                     try {
-                        parsed = JSON.parse(raw);
+                        const response = await fetch("/api/gemini", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify(payload)
+                        });
+
+                        const result = await response.json().catch(() => null);
+                        const transientStatus = response.status === 429 || response.status >= 500;
+                        if (!response.ok || !result) {
+                            console.error(`Gemini request failed (attempt ${attempt + 1})`, response.status, result);
+                            if (transientStatus && attempt < retryDelays.length - 1) continue;
+                            return this.unavailable();
+                        }
+
+                        const raw = result?.candidates?.[0]?.content?.parts
+                            ?.map(p => p.text || "")
+                            .join("")
+                            .trim();
+
+                        if (!raw) {
+                            console.error(`Gemini returned no text (attempt ${attempt + 1})`, result);
+                            if (attempt < retryDelays.length - 1) continue;
+                            return this.unavailable();
+                        }
+
+                        let parsed;
+                        try {
+                            parsed = JSON.parse(raw);
+                        } catch (err) {
+                            console.error(`Gemini JSON parse failed (attempt ${attempt + 1})`, raw);
+                            if (attempt < retryDelays.length - 1) continue;
+                            return this.unavailable();
+                        }
+
+                        const action = parsed.action === "correct" ? "correct" : "continue";
+                        return {
+                            action,
+                            hasCorrection: action === "correct",
+                            correctionText: String(parsed.correctionText || ""),
+                            retryPrompt: String(parsed.retryPrompt || ""),
+                            aiReply: String(parsed.aiReply || ""),
+                            spanishHelp: String(parsed.spanishHelp || ""),
+                            sentenceStarter: String(parsed.sentenceStarter || "")
+                        };
                     } catch (err) {
-                        console.error("Gemini JSON parse failed", raw);
+                        console.error(`Gemini network error (attempt ${attempt + 1})`, err);
+                        if (attempt < retryDelays.length - 1) continue;
                         return this.unavailable();
                     }
-
-                    const action = parsed.action === "correct" ? "correct" : "continue";
-                    return {
-                        action,
-                        hasCorrection: action === "correct",
-                        correctionText: String(parsed.correctionText || ""),
-                        retryPrompt: String(parsed.retryPrompt || ""),
-                        aiReply: String(parsed.aiReply || ""),
-                        spanishHelp: String(parsed.spanishHelp || ""),
-                        sentenceStarter: String(parsed.sentenceStarter || "")
-                    };
-                } catch (err) {
-                    console.error("Gemini network error", err);
-                    return this.unavailable();
                 }
+                return this.unavailable();
             },
 
             unavailable() {
@@ -1770,7 +1788,11 @@ For action "continue":
 
         window.handleUserSpeechCaptured = async function(userSpeechText) {
             if (!userSpeechText || !userSpeechText.trim()) return;
+            if (window.SpeechController.isAIProcessing) return;
 
+            window.SpeechController.isAIProcessing = true;
+            window.SpeechController.updateMicUI('processing');
+            try {
             const sess = window.AppState.activeSession;
             sess.speakingTurns++;
             pushTranscriptMessage('user', userSpeechText);
@@ -1814,6 +1836,13 @@ For action "continue":
             }
 
             window.saveCurrentSessionHistory();
+            } finally {
+                window.SpeechController.isAIProcessing = false;
+                // Do not overwrite the “AI Speaking...” state while speech synthesis is active.
+                if (!window.speechSynthesis || !window.speechSynthesis.speaking) {
+                    window.SpeechController.updateMicUI('idle');
+                }
+            }
         };
 
         function pushTranscriptMessage(role, text) {

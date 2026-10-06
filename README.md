@@ -68,3 +68,12 @@ Render environment:
 - APP_SECRET = private random secret
 
 After deployment, open `/api/ai-test`. A healthy AI connection should return `"ok":true` and a response containing `TUTOR_OK`.
+
+
+## Stability update (automatic retry)
+- Keeps the existing adaptive tutor prompt and correction behavior.
+- Adds up to 2 automatic retries after the original request for transient Gemini/network failures.
+- Keeps the learner on the same turn while retrying.
+- Prevents duplicate microphone submissions while AI is processing.
+- Shows the existing Thinking... state during processing.
+- Only shows the unavailable message after all retry attempts fail.
