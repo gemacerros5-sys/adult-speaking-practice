@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const PORT = process.env.PORT || 3000;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
-const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-3-flash-preview";
+const GEMINI_MODEL = "gemini-3.5-flash-lite"; // Fixed low-latency model for classroom speaking turns
 const TEACHER_CODE = process.env.TEACHER_CODE || "121705";
 const APP_SECRET = process.env.APP_SECRET || "change-this-secret-in-production";
 
@@ -126,7 +126,7 @@ app.get("/api/ai-test", async (_req, res) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         contents: [{ role: "user", parts: [{ text: "Reply with exactly: TUTOR_OK" }] }],
-        generationConfig: { thinkingConfig: { thinkingLevel: "minimal" }, maxOutputTokens: 200 }
+        generationConfig: { thinkingConfig: { thinkingLevel: "minimal" }, maxOutputTokens: 300 }
       })
     });
     const data = await upstream.json().catch(() => ({}));
@@ -139,36 +139,6 @@ app.get("/api/ai-test", async (_req, res) => {
   } catch (err) {
     console.error("AI test network error:", err);
     res.status(502).json({ ok: false, model: GEMINI_MODEL, error: "AI_REQUEST_FAILED" });
-  }
-});
-
-
-app.post("/api/live-token", async (_req, res) => {
-  if (!GEMINI_API_KEY) return res.status(503).json({ error: "AI_NOT_CONFIGURED" });
-  try {
-    const now = Date.now();
-    const body = {
-      uses: 1,
-      expireTime: new Date(now + 30 * 60 * 1000).toISOString(),
-      newSessionExpireTime: new Date(now + 60 * 1000).toISOString()
-    };
-    const upstream = await fetch("https://generativelanguage.googleapis.com/v1beta/auth_tokens", {
-      method: "POST",
-      headers: {
-        "x-goog-api-key": GEMINI_API_KEY,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(body)
-    });
-    const data = await upstream.json().catch(() => ({}));
-    if (!upstream.ok || !data?.name) {
-      console.error("Live token error:", upstream.status, JSON.stringify(data).slice(0, 1200));
-      return res.status(upstream.status || 502).json({ error: data?.error?.message || "LIVE_TOKEN_FAILED" });
-    }
-    res.json({ token: data.name, model: "gemini-3.8-live" });
-  } catch (err) {
-    console.error("Live token network error:", err);
-    res.status(502).json({ error: "LIVE_TOKEN_FAILED" });
   }
 });
 
