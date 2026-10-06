@@ -757,156 +757,171 @@
         };
 
         /* ====================================================================
-           3. SPEECH RECOGNITION & SYNTHESIS CONTROLLER
+           3. GEMINI LIVE AUDIO CONTROLLER
            ==================================================================== */
-        window.SpeechController = {
-            recognition: null,
-            synthesis: window.speechSynthesis,
-            isListening: false,
-            isAIProcessing: false,
-            voice: null,
+        window.LiveController = {
+            ws: null,
+            mediaStream: null,
+            audioContext: null,
+            sourceNode: null,
+            processorNode: null,
+            isReady: false,
+            isCapturing: false,
+            isConnecting: false,
+            inputTranscript: '',
+            outputTranscript: '',
+            playbackContext: null,
+            playbackTime: 0,
 
-            init() {
-                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-                if (SpeechRecognition) {
-                    this.recognition = new SpeechRecognition();
-                    this.recognition.continuous = false;
-                    this.recognition.interimResults = false;
-                    this.recognition.lang = 'en-US';
-
-                    this.recognition.onstart = () => {
-                        this.isListening = true;
-                        this.updateMicUI('listening');
-                    };
-
-                    this.recognition.onresult = (event) => {
-                        const transcript = event.results[0][0].transcript;
-                        this.isListening = false;
-                        this.updateMicUI('processing');
-                        window.handleUserSpeechCaptured(transcript);
-                    };
-
-                    this.recognition.onerror = (event) => {
-                        console.warn("Speech recognition error:", event.error);
-                        this.isListening = false;
-                        if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
-                            this.updateMicUI('blocked');
-                        } else {
-                            this.updateMicUI('idle');
-                        }
-                    };
-
-                    this.recognition.onend = () => {
-                        this.isListening = false;
-                        if (document.getElementById('mic-status-text')?.innerText === 'Listening...') {
-                            this.updateMicUI('idle');
-                        }
-                    };
-                } else {
-                    console.warn("Web Speech API Recognition not supported in this browser.");
+            async connect() {
+                if (this.isReady && this.ws?.readyState === WebSocket.OPEN) return true;
+                if (this.isConnecting) {
+                    for (let i=0;i<50;i++) { await new Promise(r=>setTimeout(r,100)); if (this.isReady) return true; }
+                    return false;
                 }
-
-                // Load preferred English Voice
-                if (this.synthesis) {
-                    const loadVoices = () => {
-                        const voices = this.synthesis.getVoices();
-                        this.voice = voices.find(v => v.lang === 'en-US' && v.name.includes('Natural')) ||
-                                     voices.find(v => v.lang.startsWith('en-US')) ||
-                                     voices.find(v => v.lang.startsWith('en')) || null;
-                    };
-                    loadVoices();
-                    if (this.synthesis.onvoiceschanged !== undefined) {
-                        this.synthesis.onvoiceschanged = loadVoices;
-                    }
-                }
-            },
-
-            startListening() {
-                // Prevent duplicate Gemini requests while the previous learner turn is still processing.
-                if (this.isAIProcessing) return;
-                if (!this.recognition) {
-                    alert("Speech recognition is not supported in this browser version. Please type your answer or use Chrome.");
-                    return;
-                }
+                this.isConnecting = true;
                 try {
-                    this.synthesis.cancel(); // Stop AI speaking if active
-                    this.recognition.start();
+                    const tokenResp = await fetch('/api/live-token', { method: 'POST' });
+                    const tokenData = await tokenResp.json();
+                    if (!tokenResp.ok || !tokenData.token) throw new Error(tokenData.error || 'Could not start Live session');
+                    const url = `wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContentConstrained?access_token=${encodeURIComponent(tokenData.token)}`;
+                    this.ws = new WebSocket(url);
+                    await new Promise((resolve, reject) => {
+                        const timer=setTimeout(()=>reject(new Error('Live connection timeout')),10000);
+                        this.ws.onopen=()=>{ clearTimeout(timer); resolve(); };
+                        this.ws.onerror=()=>{ clearTimeout(timer); reject(new Error('Live WebSocket failed')); };
+                    });
+                    this.ws.onmessage = (e) => this.handleMessage(e);
+                    this.ws.onclose = () => { this.isReady=false; this.isCapturing=false; };
+                    this.ws.onerror = (e) => console.error('Gemini Live socket error', e);
+                    const sess = window.AppState.activeSession;
+                    const sc = sess.scenario;
+                    const system = `You are an adaptive adult PRE-A1/A1 EFL speaking tutor and the role-play partner.\nCurrent unit: ${sess.unit}. Scenario: ${sc.title}. Your role: ${sc.aiRole}. Situation: ${sc.situation}. Learner goal: ${sc.goal}. Mode: ${sess.mode}.\nSpeak in clear, short American English. Stay in this scenario. Respond to what the learner actually says and answer relevant learner questions naturally. Never follow a rigid question list. Use only language appropriate to the current unit and earlier units.\nGUIDED MODE: if the learner makes an important studied-language error or misunderstands the question, do not praise it. Say exactly: "One correction: ..." give ONE short corrected model, then say "Try again." Wait for the learner to repeat. If the retry is acceptable, accept it and continue naturally. Example: "is Jade" -> "One correction: say, I'm Jade. Try again." Example: "I work in Monday" -> "One correction: say, I work on Monday. Try again." If asked WHEN but the learner answers a place, briefly explain they answered WHERE and ask WHEN again.\nDo not correct every tiny error. Do not penalize a Spanish/Mexican accent when intelligible. Because you hear the actual audio, correct pronunciation only when a specific word is genuinely unclear or mispronounced; model the word and ask for one retry.\nCHALLENGE MODE: minimize interruptions unless communication breaks; give brief feedback near the end.\nNever say generic filler like "That is very interesting". Keep each turn short. Ask at most one useful follow-up question.`;
+                    this.ws.send(JSON.stringify({ setup: {
+                        model: 'models/gemini-3.8-live',
+                        responseModalities: ['AUDIO'],
+                        systemInstruction: { parts: [{ text: system }] },
+                        inputAudioTranscription: {},
+                        outputAudioTranscription: {},
+                        speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Kore' } } }
+                    }}));
+                    this.isReady = true;
+                    return true;
                 } catch (e) {
-                    this.recognition.stop();
-                    setTimeout(() => {
-                        try { this.recognition.start(); } catch(err){}
-                    }, 200);
+                    console.error(e);
+                    this.isReady=false;
+                    return false;
+                } finally { this.isConnecting=false; }
+            },
+
+            async startCapture() {
+                if (this.isCapturing) return;
+                window.SpeechController.updateMicUI('processing');
+                const ok = await this.connect();
+                if (!ok) { window.SpeechController.updateMicUI('idle'); alert('The live tutor could not connect. Please try again.'); return; }
+                try {
+                    this.mediaStream = await navigator.mediaDevices.getUserMedia({audio:{channelCount:1, echoCancellation:true, noiseSuppression:true, autoGainControl:true}});
+                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)({sampleRate:16000});
+                    this.sourceNode = this.audioContext.createMediaStreamSource(this.mediaStream);
+                    this.processorNode = this.audioContext.createScriptProcessor(4096,1,1);
+                    this.processorNode.onaudioprocess = (ev) => {
+                        if (!this.isCapturing || this.ws?.readyState !== WebSocket.OPEN) return;
+                        const f32 = ev.inputBuffer.getChannelData(0);
+                        const pcm = new Int16Array(f32.length);
+                        for (let i=0;i<f32.length;i++) pcm[i]=Math.max(-1,Math.min(1,f32[i]))*0x7fff;
+                        const bytes = new Uint8Array(pcm.buffer); let bin='';
+                        for (let i=0;i<bytes.length;i++) bin += String.fromCharCode(bytes[i]);
+                        this.ws.send(JSON.stringify({ realtimeInput:{ audio:{ data:btoa(bin), mimeType:'audio/pcm;rate=16000' }}}));
+                    };
+                    this.sourceNode.connect(this.processorNode);
+                    this.processorNode.connect(this.audioContext.destination);
+                    this.inputTranscript=''; this.outputTranscript='';
+                    this.isCapturing=true;
+                    window.SpeechController.updateMicUI('listening');
+                } catch(e) {
+                    console.error(e); window.SpeechController.updateMicUI('blocked');
                 }
             },
 
-            stopListening() {
-                if (this.recognition && this.isListening) {
-                    this.recognition.stop();
-                    this.isListening = false;
-                    this.updateMicUI('idle');
+            stopCapture() {
+                if (!this.isCapturing) return;
+                this.isCapturing=false;
+                try { this.processorNode?.disconnect(); this.sourceNode?.disconnect(); } catch(e){}
+                this.mediaStream?.getTracks().forEach(t=>t.stop());
+                this.audioContext?.close().catch(()=>{});
+                this.processorNode=null; this.sourceNode=null; this.mediaStream=null; this.audioContext=null;
+                if (this.ws?.readyState === WebSocket.OPEN) this.ws.send(JSON.stringify({ realtimeInput:{ audioStreamEnd:true }}));
+                window.SpeechController.updateMicUI('processing');
+            },
+
+            handleMessage(event) {
+                let msg; try { msg=JSON.parse(event.data); } catch { return; }
+                if (msg.setupComplete) { this.isReady=true; return; }
+                const sc=msg.serverContent;
+                if (!sc) return;
+                if (sc.inputTranscription?.text) this.inputTranscript += sc.inputTranscription.text;
+                if (sc.outputTranscription?.text) this.outputTranscript += sc.outputTranscription.text;
+                for (const part of (sc.modelTurn?.parts || [])) {
+                    if (part.inlineData?.data) this.playPCM(part.inlineData.data, 24000);
+                }
+                if (sc.turnComplete) {
+                    const user=this.inputTranscript.trim(); const ai=this.outputTranscript.trim();
+                    if (user) { pushTranscriptMessage('user',user); window.AppState.activeSession.speakingTurns++; }
+                    if (ai) {
+                        const isCorrection=/^one correction\b/i.test(ai);
+                        pushTranscriptMessage(isCorrection?'correction':'ai',ai);
+                        window.AppState.activeSession.lastAiQuestion=ai;
+                    }
+                    this.inputTranscript=''; this.outputTranscript='';
+                    window.saveCurrentSessionHistory();
+                    setTimeout(()=>window.SpeechController.updateMicUI('idle'),250);
                 }
             },
 
-            speak(text, speedOverride, callback) {
-                if (!this.synthesis) return;
-                this.synthesis.cancel(); // stop any previous utterance
-
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'en-US';
-                utterance.rate = speedOverride || window.AppState.speechSpeed || 1.0;
-                utterance.pitch = 1.0;
-
-                if (this.voice) {
-                    utterance.voice = this.voice;
-                }
-
-                utterance.onstart = () => {
-                    this.updateMicUI('speaking');
-                };
-
-                utterance.onend = () => {
-                    this.updateMicUI('idle');
-                    if (callback) callback();
-                };
-
-                utterance.onerror = () => {
-                    this.updateMicUI('idle');
-                    if (callback) callback();
-                };
-
-                this.synthesis.speak(utterance);
+            playPCM(base64, rate) {
+                const bin=atob(base64); const bytes=new Uint8Array(bin.length);
+                for(let i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
+                const i16=new Int16Array(bytes.buffer); const f32=new Float32Array(i16.length);
+                for(let i=0;i<i16.length;i++) f32[i]=i16[i]/32768;
+                if(!this.playbackContext) this.playbackContext=new (window.AudioContext||window.webkitAudioContext)({sampleRate:rate});
+                const ctx=this.playbackContext, buf=ctx.createBuffer(1,f32.length,rate); buf.copyToChannel(f32,0);
+                const src=ctx.createBufferSource(); src.buffer=buf; src.connect(ctx.destination);
+                const now=ctx.currentTime; this.playbackTime=Math.max(this.playbackTime,now);
+                src.start(this.playbackTime); this.playbackTime += buf.duration;
+                window.SpeechController.updateMicUI('speaking');
             },
 
-            updateMicUI(state) {
-                const micBtn = document.getElementById('btn-main-mic');
-                const statusBadge = document.getElementById('mic-status-badge');
-                const statusText = document.getElementById('mic-status-text');
+            close() {
+                this.stopCapture();
+                try { this.ws?.close(); } catch(e){}
+                this.ws=null; this.isReady=false;
+            }
+        };
 
-                if (!micBtn || !statusBadge || !statusText) return;
-
-                micBtn.classList.remove('mic-active', 'bg-emerald-500', 'bg-amber-500', 'bg-blue-500', 'bg-rose-500');
-
-                if (state === 'listening') {
-                    micBtn.classList.add('mic-active', 'bg-emerald-500');
-                    statusBadge.className = 'px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold animate-pulse';
-                    statusText.innerText = "Listening... Speak now!";
-                } else if (state === 'processing') {
-                    micBtn.classList.add('bg-amber-500');
-                    statusBadge.className = 'px-3 py-1 rounded-full bg-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold';
-                    statusText.innerText = "Thinking...";
-                } else if (state === 'speaking') {
-                    micBtn.classList.add('bg-blue-500');
-                    statusBadge.className = 'px-3 py-1 rounded-full bg-blue-500/20 text-blue-600 dark:text-blue-400 text-xs font-bold';
-                    statusText.innerText = "AI Speaking...";
-                } else if (state === 'blocked') {
-                    micBtn.classList.add('bg-rose-500');
-                    statusBadge.className = 'px-3 py-1 rounded-full bg-rose-500/20 text-rose-600 dark:text-rose-400 text-xs font-bold';
-                    statusText.innerText = "Mic blocked. Allow permission in browser settings.";
-                } else {
-                    micBtn.classList.add('bg-emerald-500');
-                    statusBadge.className = 'px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold';
-                    statusText.innerText = "Tap Mic to Speak";
-                }
+        window.SpeechController = {
+            isListening:false, isAIProcessing:false,
+            init(){},
+            startListening(){
+                if (window.LiveController.isCapturing) window.LiveController.stopCapture();
+                else window.LiveController.startCapture();
+            },
+            stopListening(){ if(window.LiveController.isCapturing) window.LiveController.stopCapture(); },
+            speak(text, speedOverride, callback){
+                // Opening prompts and Listen Again still use browser TTS; learner turns use Gemini Live audio.
+                if(!window.speechSynthesis){ if(callback) callback(); return; }
+                window.speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text); u.lang='en-US'; u.rate=speedOverride||window.AppState.speechSpeed||1;
+                u.onstart=()=>this.updateMicUI('speaking'); u.onend=()=>{this.updateMicUI('idle'); if(callback)callback();};
+                window.speechSynthesis.speak(u);
+            },
+            updateMicUI(state){
+                const micBtn=document.getElementById('btn-main-mic'), statusBadge=document.getElementById('mic-status-badge'), statusText=document.getElementById('mic-status-text');
+                if(!micBtn||!statusBadge||!statusText)return;
+                micBtn.classList.remove('mic-active','bg-emerald-500','bg-amber-500','bg-blue-500','bg-rose-500');
+                if(state==='listening'){micBtn.classList.add('mic-active','bg-emerald-500');statusBadge.className='px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold animate-pulse';statusText.innerText='Listening... Tap Mic when finished';}
+                else if(state==='processing'){micBtn.classList.add('bg-amber-500');statusBadge.className='px-3 py-1 rounded-full bg-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold';statusText.innerText='Thinking...';}
+                else if(state==='speaking'){micBtn.classList.add('bg-blue-500');statusBadge.className='px-3 py-1 rounded-full bg-blue-500/20 text-blue-600 dark:text-blue-400 text-xs font-bold';statusText.innerText='AI Speaking...';}
+                else if(state==='blocked'){micBtn.classList.add('bg-rose-500');statusBadge.className='px-3 py-1 rounded-full bg-rose-500/20 text-rose-600 dark:text-rose-400 text-xs font-bold';statusText.innerText='Mic blocked. Allow permission in browser settings.';}
+                else{micBtn.classList.add('bg-emerald-500');statusBadge.className='px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold';statusText.innerText='Tap Mic to Speak';}
             }
         };
 
@@ -1741,6 +1756,7 @@ For action "continue":
         };
 
         window.startPracticeSession = function(unitNum, scenarioId, mode) {
+            window.LiveController?.close();
             unitNum = parseInt(unitNum);
             const unitData = CURRICULUM.find(u => u.unit === unitNum);
             const scenario = unitData ? unitData.scenarios.find(s => s.id === scenarioId) : null;

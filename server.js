@@ -142,6 +142,36 @@ app.get("/api/ai-test", async (_req, res) => {
   }
 });
 
+
+app.post("/api/live-token", async (_req, res) => {
+  if (!GEMINI_API_KEY) return res.status(503).json({ error: "AI_NOT_CONFIGURED" });
+  try {
+    const now = Date.now();
+    const body = {
+      uses: 1,
+      expireTime: new Date(now + 30 * 60 * 1000).toISOString(),
+      newSessionExpireTime: new Date(now + 60 * 1000).toISOString()
+    };
+    const upstream = await fetch("https://generativelanguage.googleapis.com/v1beta/auth_tokens", {
+      method: "POST",
+      headers: {
+        "x-goog-api-key": GEMINI_API_KEY,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+    });
+    const data = await upstream.json().catch(() => ({}));
+    if (!upstream.ok || !data?.name) {
+      console.error("Live token error:", upstream.status, JSON.stringify(data).slice(0, 1200));
+      return res.status(upstream.status || 502).json({ error: data?.error?.message || "LIVE_TOKEN_FAILED" });
+    }
+    res.json({ token: data.name, model: "gemini-3.8-live" });
+  } catch (err) {
+    console.error("Live token network error:", err);
+    res.status(502).json({ error: "LIVE_TOKEN_FAILED" });
+  }
+});
+
 app.post("/api/gemini", async (req, res) => {
   if (!GEMINI_API_KEY) {
     return res.status(503).json({

@@ -77,3 +77,11 @@ After deployment, open `/api/ai-test`. A healthy AI connection should return `"o
 - Prevents duplicate microphone submissions while AI is processing.
 - Shows the existing Thinking... state during processing.
 - Only shows the unavailable message after all retry attempts fail.
+
+
+## Gemini 3.8 Live edition
+This build uses Gemini 3.8 Live for learner speaking turns. The browser requests a short-lived ephemeral token from `/api/live-token`, then streams microphone PCM audio directly to Gemini over WebSocket. The long-lived `GEMINI_API_KEY` remains only on Render.
+
+Important: keep the existing `GEMINI_API_KEY`, `TEACHER_CODE`, and `APP_SECRET` environment variables. `GEMINI_MODEL` may remain present for the legacy `/api/gemini` diagnostic route; Live sessions explicitly use `gemini-3.8-live`.
+
+Mic behavior: tap once to start speaking; tap again when finished.
