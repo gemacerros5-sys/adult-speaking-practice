@@ -52,3 +52,19 @@ This update keeps the existing design and microphone, but changes the tutor logi
 - The AI must answer relevant learner questions before continuing.
 - Generic unrelated replies were removed from the offline fallback.
 - Teacher session listing is protected by teacher authentication.
+
+
+## Tutor V3
+This version removes fake conversational fallback responses. If Gemini is unavailable, the UI says so instead of pretending to continue. `/api/ai-test` safely verifies the real Gemini connection without exposing the API key. Guided Practice now uses Gemini for adaptive correction, retry, and scenario continuation across all units.
+
+
+## Final feedback build
+This build ports the adaptive correction behavior from the earlier Gemini-hosted version into the Render full-stack architecture. It preserves microphone handling, pauses Guided Practice for a correction retry, resumes the same scenario after an acceptable retry, and avoids fake generic fallback conversations.
+
+Render environment:
+- GEMINI_API_KEY = your private key
+- GEMINI_MODEL = gemini-3-flash-preview
+- TEACHER_CODE = 121705
+- APP_SECRET = private random secret
+
+After deployment, open `/api/ai-test`. A healthy AI connection should return `"ok":true` and a response containing `TUTOR_OK`.

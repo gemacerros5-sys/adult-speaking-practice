@@ -912,205 +912,183 @@
            ==================================================================== */
         window.AIEngine = {
             async generateResponse(scenario, mode, history, userSpeech, pendingCorrection = null) {
-                const apiUrl = `/api/gemini`;
-                const currentUnitNum = scenario.unitNum || 1;
-                const recentHistory = history.slice(-12);
+                const currentUnitNum = Number(scenario.unitNum || 1);
+                const recentHistory = history
+                    .filter(m => m.role === 'user' || m.role === 'ai' || m.role === 'correction')
+                    .slice(-20);
 
-                const systemPrompt = `You are an ADAPTIVE ADULT EFL SPEAKING TUTOR and also the role-play character.
-The learner is PRE-A1/A1. Your job is BOTH to teach and to keep a realistic conversation.
+                const systemPrompt = `You are an ADAPTIVE ADULT EFL SPEAKING TUTOR and the role-play partner in the current scenario.
+
+LEARNER
+Adult PRE-A1/A1 EFL learner.
 
 CURRENT PRACTICE
-Unit: ${currentUnitNum} — ${scenario.unitTitle || ''}
+Unit: ${currentUnitNum}
 Scenario: ${scenario.title}
-Your role: ${scenario.aiRole}
+AI role: ${scenario.aiRole}
 Situation: ${scenario.situation}
 Learner goal: ${scenario.goal}
 Mode: ${mode}
 
 NON-NEGOTIABLE CONVERSATION RULES
-- Stay inside THIS situation and learner goal. Do not drift to unrelated topics.
-- Respond to what the learner actually says. If the learner asks you a relevant question, ANSWER it naturally as the role-play character.
-- Then, when useful, ask ONE short relevant follow-up that helps practice the scenario goal.
-- Never use generic filler such as "That is very interesting", "Anything else you need today?", "Tell me more", or "How about your weekend?" unless it genuinely fits this exact situation.
-- Never repeat a question the learner already answered unless you are asking for a correction/retry or clarification.
-- Use only simple language available from Units 1 through ${currentUnitNum}. Never require language from a later unit.
-- Keep each AI turn to 1–2 short sentences.
-- The learner may use real or invented information. Never force personal disclosure.
+- Respond to what the learner ACTUALLY says. Never follow a fixed question list.
+- Maintain the SAME scenario and goal until the practice ends.
+- If the learner asks a relevant question, answer it naturally in character.
+- Then continue with ONE short, relevant question only when useful.
+- Never repeat a question that the learner already answered correctly.
+- Never use generic filler such as "That is very interesting", "Anything else you need today?", "Tell me more", or unrelated questions unless it genuinely fits this scenario.
+- Keep turns short and understandable for PRE-A1/A1.
+- Use only course language available through Unit ${currentUnitNum}.
+- The learner may use real or fictional information.
 
-GUIDED PRACTICE — TEACHER BEHAVIOR
+GUIDED PRACTICE FEEDBACK
 Before continuing, evaluate the learner's LAST utterance.
-Correct an error when it is important for communication OR it uses language already taught in Units 1–${currentUnitNum}.
-Examples:
-"I ready" -> "Say: I am ready."
-"I am exercise" -> "Say: I exercise."
-"I work in Monday" -> "Say: I work on Monday."
-If you asked WHEN and the learner answers a place, explain: "That tells me WHERE. WHEN asks for a day or time."
-If you asked WHERE and the learner answers a day/time, explain the difference briefly.
-Do NOT praise an incorrect answer first.
-Do NOT continue to a new question when an important correction is required.
-Ask the learner to TRY AGAIN. The next learner turn must be evaluated as the retry.
-When the retry communicates the corrected idea acceptably, continue the SAME scenario naturally.
+Correct an error when:
+- it affects meaning or comprehensibility;
+- it uses studied grammar incorrectly in an important way;
+- the learner misunderstood the question;
+- or the same important error is repeated.
 
-ADAPTATION EXAMPLE
-Scenario: Exchanging Numbers.
+Examples of desired behavior:
+AI: "What's your name?"
+Learner: "is Jade"
+=> CORRECT. Model: "My name is Jade." or "I'm Jade." Ask for one retry. DO NOT repeat the original question yet.
+
+AI: "Where are you from?"
+Learner: "is from Mexico"
+=> CORRECT. Model: "I am from Mexico." Ask for one retry.
+
+Learner: "I ready"
+=> CORRECT. Model: "I am ready."
+
+Learner: "I work in Monday"
+=> CORRECT. Model: "I work on Monday."
+
+If AI asks WHEN and learner answers a PLACE:
+=> briefly explain that WHEN asks for a day/time and ask the learner to answer again.
+
+RETRY STATE
+If pendingCorrection is present, the learner is retrying a previous correction.
+- Judge whether the new utterance communicates the corrected idea acceptably.
+- Do NOT require an exact word-for-word copy.
+- If acceptable, mark action "continue" and immediately resume the SAME role-play naturally.
+- If the important error remains, mark action "correct" and give one short model again.
+- Never create an endless retry loop over capitalization, punctuation, accent, or a minor issue.
+
+ADAPTIVE EXAMPLE
+Scenario: Exchanging Phone Numbers.
 Learner: "What's your phone number?"
-Answer with a simple phone number because the learner asked you. Then ask for their number if appropriate.
-Do NOT ignore their question and do NOT switch to work/study/weekend topics.
+If acceptable, answer the question with a simple fictional phone number and, if natural, ask for the learner's number.
+Do not ignore the learner's question and do not switch topics.
 
 PRONUNCIATION
-Text transcription alone is not proof of a pronunciation error. Never invent pronunciation feedback from text.
+The input is a speech-recognition transcript, not acoustic pronunciation evidence. Never claim a pronunciation error solely from the transcript.
 
 CHALLENGE MODE
-Do not interrupt for ordinary grammar errors. Stay in the scenario and adapt naturally. Only clarify if communication breaks down.
+Keep the conversation flowing. Do not interrupt for ordinary grammar errors unless communication breaks down.
 
-OUTPUT VALID JSON ONLY:
+Return ONLY valid JSON in this exact shape:
 {
   "action": "correct" or "continue",
-  "hasCorrection": true or false,
-  "correctionText": "brief correction, or empty",
-  "retryPrompt": "very short retry instruction, or empty",
-  "aiReply": "role-play response; empty when action is correct",
-  "spanishHelp": "brief Spanish explanation",
-  "sentenceStarter": "2-5 word starter fitting this situation"
-}`;
+  "correctionText": "",
+  "retryPrompt": "",
+  "aiReply": "",
+  "spanishHelp": "",
+  "sentenceStarter": ""
+}
 
-                const promptPayload = {
+For action "correct":
+- correctionText must contain the short correction/model.
+- retryPrompt must ask the learner to try again.
+- aiReply must be empty because the role-play must pause for the retry.
+
+For action "continue":
+- correctionText and retryPrompt must be empty.
+- aiReply must be the next natural role-play response.`;
+
+                const payload = {
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
                     contents: [{
                         role: "user",
-                        parts: [{ text: JSON.stringify({
-                            scenario: {
-                                title: scenario.title,
-                                role: scenario.aiRole,
-                                situation: scenario.situation,
-                                goal: scenario.goal,
-                                unit: currentUnitNum
-                            },
-                            pendingCorrection,
-                            conversationHistory: recentHistory,
-                            studentLastUtterance: userSpeech
-                        }) }]
+                        parts: [{
+                            text: JSON.stringify({
+                                currentScenario: {
+                                    id: scenario.id,
+                                    title: scenario.title,
+                                    aiRole: scenario.aiRole,
+                                    situation: scenario.situation,
+                                    learnerGoal: scenario.goal,
+                                    unit: currentUnitNum
+                                },
+                                mode,
+                                pendingCorrection,
+                                recentConversation: recentHistory,
+                                learnerLastUtterance: userSpeech
+                            })
+                        }]
                     }],
-                    systemInstruction: { parts: [{ text: systemPrompt }] },
                     generationConfig: {
                         responseMimeType: "application/json",
-                        temperature: 0.25
+                        temperature: 0.15,
+                        maxOutputTokens: 500
                     }
                 };
 
                 try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(promptPayload)
+                    const response = await fetch("/api/gemini", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload)
                     });
 
-                    if (response.ok) {
-                        const result = await response.json();
-                        const jsonText = result.candidates?.[0]?.content?.parts?.[0]?.text;
-                        if (jsonText) {
-                            const parsed = JSON.parse(jsonText);
-                            parsed.hasCorrection = parsed.action === "correct" || parsed.hasCorrection === true;
-                            if (parsed.hasCorrection) {
-                                parsed.aiReply = "";
-                                parsed.retryPrompt = parsed.retryPrompt || "Try again.";
-                            }
-                            return parsed;
-                        }
+                    const result = await response.json().catch(() => null);
+                    if (!response.ok || !result) {
+                        console.error("Gemini request failed", response.status, result);
+                        return this.unavailable();
                     }
-                } catch (e) {
-                    console.warn("Gemini API warning; using local tutor fallback:", e);
-                }
 
-                return this.fallbackGenerator(scenario, mode, history, userSpeech, pendingCorrection);
+                    const raw = result?.candidates?.[0]?.content?.parts
+                        ?.map(p => p.text || "")
+                        .join("")
+                        .trim();
+
+                    if (!raw) {
+                        console.error("Gemini returned no text", result);
+                        return this.unavailable();
+                    }
+
+                    let parsed;
+                    try {
+                        parsed = JSON.parse(raw);
+                    } catch (err) {
+                        console.error("Gemini JSON parse failed", raw);
+                        return this.unavailable();
+                    }
+
+                    const action = parsed.action === "correct" ? "correct" : "continue";
+                    return {
+                        action,
+                        hasCorrection: action === "correct",
+                        correctionText: String(parsed.correctionText || ""),
+                        retryPrompt: String(parsed.retryPrompt || ""),
+                        aiReply: String(parsed.aiReply || ""),
+                        spanishHelp: String(parsed.spanishHelp || ""),
+                        sentenceStarter: String(parsed.sentenceStarter || "")
+                    };
+                } catch (err) {
+                    console.error("Gemini network error", err);
+                    return this.unavailable();
+                }
             },
 
-            fallbackGenerator(scenario, mode, history, userSpeech, pendingCorrection = null) {
-                const lower = userSpeech.toLowerCase().trim();
-                const lastAi = [...history].reverse().find(m => m.role === 'ai')?.text?.toLowerCase() || "";
-                let correctionText = "";
-
-                if (mode === 'guided') {
-                    if (/^i\s+ready[.!]?$/i.test(userSpeech.trim())) {
-                        correctionText = "Say: I am ready.";
-                    } else if (/\bi\s+am\s+(exercise|work|study|live)\b/i.test(lower)) {
-                        const verb = lower.match(/\bi\s+am\s+(exercise|work|study|live)\b/i)?.[1] || "work";
-                        correctionText = `Say: I ${verb}.`;
-                    } else if (/\bin\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i.test(lower)) {
-                        correctionText = "Use ON for days. Example: I work on Monday.";
-                    } else if (lastAi.includes("when") &&
-                               (/\b(at|in)\s+(a|the)\s+\w+/.test(lower) ||
-                                /\b(gas station|office|school|hospital|store|factory|restaurant|university)\b/.test(lower)) &&
-                               !/\b(monday|tuesday|wednesday|thursday|friday|saturday|sunday|morning|afternoon|evening|\d{1,2}(:\d{2})?)\b/.test(lower)) {
-                        correctionText = "That tells me WHERE. WHEN asks for a day or time.";
-                    }
-
-                    if (correctionText) {
-                        return {
-                            action: "correct",
-                            hasCorrection: true,
-                            correctionText,
-                            retryPrompt: "Try again. Say your answer one more time.",
-                            aiReply: "",
-                            spanishHelp: "Corrige tu respuesta y vuelve a decirla.",
-                            sentenceStarter: ""
-                        };
-                    }
-                }
-
-                const id = scenario.id || "";
-                let aiReply = "";
-
-                if (id === "u1_s4") {
-                    if (/what('?s| is)\s+your\s+(phone\s+)?number/i.test(lower)) {
-                        aiReply = "My phone number is 555-204-7816. What's your phone number?";
-                    } else if (/\d/.test(lower)) {
-                        aiReply = "Thank you. Do you want me to repeat my number?";
-                    } else {
-                        aiReply = "Sure. What's your phone number?";
-                    }
-                } else if (id === "u2_s1") {
-                    if (/how much|price/.test(lower)) aiReply = "It's 35 pesos. Would you like it?";
-                    else if (/i('| wi)ll take it|yes/.test(lower)) aiReply = "Great. Anything else?";
-                    else if (/no|that'?s all/.test(lower)) aiReply = "That will be 35 pesos, please.";
-                    else aiReply = "Hello! Can I help you?";
-                } else {
-                    const prompts = {
-                        u1_s1: "Nice to meet you. Where are you from?",
-                        u1_s2: "Nice to meet you. What's your name?",
-                        u1_s3: "Welcome. What's your name, please?",
-                        u2_s2: "What days do you work or study?",
-                        u2_s3: "Where do you work? Is it near or far?",
-                        u3_s1: "Who is this person? What does he or she do?",
-                        u3_s2: "Tell me about your friend. What does he or she do?",
-                        u4_s1: "What are you looking for? What color do you like?",
-                        u4_s2: "Do you like this one or that one?",
-                        u5_s1: "What does the person look like?",
-                        u5_s2: "Does he or she have long or short hair?",
-                        u6_s1: "What item did you lose?",
-                        u6_s2: "Is this charger yours?",
-                        u7_s1: "Where are the keys?",
-                        u7_s2: "Where is the desk in your room?",
-                        u8_s1: "Is there a pharmacy near here?",
-                        u8_s2: "Is there a park near your home?",
-                        u9_s1: "What time do you get up?",
-                        u9_s2: "What do you do in the evening?",
-                        u10_s1: "What do you want to do this weekend?",
-                        u10_s2: "What sport do you like?",
-                        u11_s1: "Excuse me. How do I get to the park?",
-                        u11_s2: "Excuse me. Where is the pharmacy?",
-                        u12_s1: "What can you do at work?",
-                        u12_s2: "What can you do in your free time?"
-                    };
-                    aiReply = prompts[id] || "Could you say that again?";
-                }
-
+            unavailable() {
                 return {
-                    action: "continue",
+                    action: "error",
                     hasCorrection: false,
                     correctionText: "",
                     retryPrompt: "",
-                    aiReply,
-                    spanishHelp: "Responde dentro de la situación actual.",
+                    aiReply: "The AI tutor is temporarily unavailable. Please try again.",
+                    spanishHelp: "El tutor de IA no respondió. Intenta nuevamente.",
                     sentenceStarter: ""
                 };
             }
@@ -1798,27 +1776,38 @@ OUTPUT VALID JSON ONLY:
             pushTranscriptMessage('user', userSpeechText);
 
             const history = sess.transcript.map(t => ({ role: t.role, text: t.text }));
-            const pending = sess.pendingCorrectionRetry || null;
-            const aiResult = await window.AIEngine.generateResponse(
-                sess.scenario, sess.mode, history, userSpeechText, pending
+            const result = await window.AIEngine.generateResponse(
+                sess.scenario,
+                sess.mode,
+                history,
+                userSpeechText,
+                sess.pendingCorrectionRetry || null
             );
 
             sess.contextualHelp = {
-                spanishHelp: aiResult.spanishHelp || "Escucha la pregunta y responde con una frase corta.",
-                sentenceStarter: aiResult.sentenceStarter || ""
+                spanishHelp: result.spanishHelp || "Escucha y responde con una frase corta.",
+                sentenceStarter: result.sentenceStarter || ""
             };
 
-            if (sess.mode === 'guided' && aiResult.hasCorrection && aiResult.correctionText) {
+            if (result.action === "error") {
+                pushTranscriptMessage('ai', result.aiReply);
+                window.SpeechController.speak(result.aiReply);
+                window.saveCurrentSessionHistory();
+                return;
+            }
+
+            if (sess.mode === 'guided' && result.action === "correct") {
+                const correction = result.correctionText || "Try that sentence again.";
+                const retry = result.retryPrompt || "Try again.";
                 sess.pendingCorrectionRetry = {
                     originalUtterance: userSpeechText,
-                    correctionText: aiResult.correctionText
+                    correctionText: correction
                 };
-                const correctionMessage = `${aiResult.correctionText}\nTRY AGAIN: ${aiResult.retryPrompt || 'Say your answer again.'}`;
-                pushTranscriptMessage('correction', correctionMessage);
-                window.SpeechController.speak(`${aiResult.correctionText} ${aiResult.retryPrompt || 'Try again.'}`);
+                pushTranscriptMessage('correction', `${correction}\nTRY AGAIN: ${retry}`);
+                window.SpeechController.speak(`${correction} ${retry}`);
             } else {
-                sess.pendingCorrectionRetry = false;
-                const reply = aiResult.aiReply || "Okay. Let's continue.";
+                sess.pendingCorrectionRetry = null;
+                const reply = result.aiReply || "Could you say that again, please?";
                 pushTranscriptMessage('ai', reply);
                 sess.lastAiQuestion = reply;
                 window.SpeechController.speak(reply);

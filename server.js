@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const PORT = process.env.PORT || 3000;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
-const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-3-flash-preview";
 const TEACHER_CODE = process.env.TEACHER_CODE || "121705";
 const APP_SECRET = process.env.APP_SECRET || "change-this-secret-in-production";
 
@@ -64,7 +64,7 @@ function requireTeacher(req, res, next) {
 }
 
 app.get("/api/health", (_req, res) => {
-  res.json({ ok: true, aiConfigured: Boolean(GEMINI_API_KEY) });
+  res.json({ ok: true, aiConfigured: Boolean(GEMINI_API_KEY), model: GEMINI_MODEL });
 });
 
 app.post("/api/teacher-login", (req, res) => {
@@ -114,6 +114,34 @@ app.post("/api/sessions", async (req, res) => {
   res.status(201).json({ ok: true, id: safe.id });
 });
 
+app.get("/api/ai-test", async (_req, res) => {
+  if (!GEMINI_API_KEY) return res.status(503).json({ ok: false, error: "AI_NOT_CONFIGURED" });
+
+  const url =
+    `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(GEMINI_MODEL)}:generateContent?key=${encodeURIComponent(GEMINI_API_KEY)}`;
+
+  try {
+    const upstream = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [{ role: "user", parts: [{ text: "Reply with exactly: TUTOR_OK" }] }],
+        generationConfig: { temperature: 0, maxOutputTokens: 20 }
+      })
+    });
+    const data = await upstream.json().catch(() => ({}));
+    const text = data?.candidates?.[0]?.content?.parts?.map(p => p.text || "").join("").trim() || "";
+    if (!upstream.ok) {
+      console.error("AI test failed:", upstream.status, JSON.stringify(data).slice(0, 1200));
+      return res.status(upstream.status).json({ ok: false, model: GEMINI_MODEL, status: upstream.status, error: data?.error?.message || "Gemini request failed" });
+    }
+    res.json({ ok: true, model: GEMINI_MODEL, response: text });
+  } catch (err) {
+    console.error("AI test network error:", err);
+    res.status(502).json({ ok: false, model: GEMINI_MODEL, error: "AI_REQUEST_FAILED" });
+  }
+});
+
 app.post("/api/gemini", async (req, res) => {
   if (!GEMINI_API_KEY) {
     return res.status(503).json({
@@ -133,6 +161,9 @@ app.post("/api/gemini", async (req, res) => {
     });
 
     const text = await upstream.text();
+    if (!upstream.ok) {
+      console.error(`Gemini upstream error ${upstream.status} using model ${GEMINI_MODEL}:`, text.slice(0, 1200));
+    }
     res.status(upstream.status);
     res.type(upstream.headers.get("content-type") || "application/json");
     res.send(text);
